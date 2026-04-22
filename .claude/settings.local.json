@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:hack2skill.com)",
+      "WebFetch(domain:promptwars.in)",
+      "WebFetch(domain:developers.google.com)"
+    ]
+  }
+}
