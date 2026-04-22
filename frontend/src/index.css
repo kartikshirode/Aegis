@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root { height: 100%; }
+
+.bilingual :lang(hi) { font-family: 'Noto Sans Devanagari', system-ui, sans-serif; }

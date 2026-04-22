@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+.parcel-cache/
+.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Env + secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+gcp-sa*.json
+service-account*.json
+credentials*.json
+
+# Aegis runtime + generated
+/data/originals/*.mp4
+/data/adversarial/*.mp4
+/data/case-study/generated/*
+/tmp/
+aegis_workdir/
+
+# Media artefacts from ffmpeg runs
+*.mp4.tmp
+
+# Benchmarks artefacts (keep manifest.json, drop raw outputs by default)
+/benchmark/out/

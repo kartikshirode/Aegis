@@ -1,0 +1,39 @@
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   Licensed to the Aegis authors ("the Authors") for the Aegis project, a
+   submission to the Google Solution Challenge 2026. The core Aegis system —
+   provenance layer, athlete-facing view, detection pipeline, and takedown
+   drafting — is licensed under the Apache License, Version 2.0 (the
+   "License"). You may not use this file except in compliance with the
+   License. You may obtain a copy of the License at:
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+   Full Apache-2.0 license text is included below by reference to
+   http://www.apache.org/licenses/LICENSE-2.0. On final submission, the
+   full license text will be expanded in-line in this file.
+
+   Third-party components retain their own licenses. Notable dependencies
+   and their licenses:
+     - Vertex AI SDK (Apache-2.0)
+     - FastAPI (MIT)
+     - Pydantic (MIT)
+     - ImageHash (BSD-2-Clause)
+     - React (MIT)
+     - Tailwind CSS (MIT)
+     - c2patool (MIT, when invoked)
+
+   Deepfake training datasets referenced by this project (DFDC, Celeb-DF)
+   are NOT included in this repository and are governed by their own
+   research-use terms — see docs/ethics.md.
+
+   "Aegis" as a product name is reserved by the Aegis team for the purposes
+   of the Google Solution Challenge 2026 submission.

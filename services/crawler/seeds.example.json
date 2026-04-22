@@ -1,0 +1,8 @@
+[
+  {
+    "host": "aegis-test-domain.example",
+    "seeds": [
+      "https://aegis-test-domain.example/constructed-meera-clip.mp4"
+    ]
+  }
+]
