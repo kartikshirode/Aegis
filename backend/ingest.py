@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import imagehash
+import numpy as np
 from PIL import Image
 
 from backend.schema import Clip, RightsHolderContact
@@ -117,10 +118,12 @@ def _mock_embedding(frame: Path, dim: int = 1408) -> list[float]:
     with Image.open(frame) as img:
         p_bits = imagehash.phash(img).hash.flatten()
         d_bits = imagehash.dhash(img).hash.flatten()
-    import numpy as np
     bits = np.concatenate([p_bits.astype(np.int8), d_bits.astype(np.int8)])  # shape (128,)
     signed = (bits * 2 - 1).astype(np.float32)                               # {+1, -1}
-    # Tile + clip to `dim`. Normalize so the consumer's cosine is well-defined.
+    # Note on dimensionality: the effective information content is 128 bits
+    # (64 pHash + 64 dHash). Tiling to `dim` is a no-op for cosine similarity
+    # — we do it only so the mock matches the declared Vertex dimension and
+    # the index code can be wired identically in LOCAL and GCP modes.
     reps = (dim + signed.size - 1) // signed.size
     tiled = np.tile(signed, reps)[:dim]
     norm = float(np.linalg.norm(tiled)) or 1.0

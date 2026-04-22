@@ -3,14 +3,12 @@
 Each agent knows how to shape a notice for one platform. The top-level
 backend.takedown.draft_notice() delegates to the agent registered for the
 candidate's platform. This module preserves the "agent per platform" framing
-from the Pramāṇ plan while keeping the implementation single-process; if the
-ADK-style out-of-process multi-agent orchestration comes back, the interface
-below is the drop-in surface for it.
+from the original design plan while keeping the implementation single-process;
+if the ADK-style out-of-process multi-agent orchestration comes back, the
+interface below is the drop-in surface for it.
 """
 
 from __future__ import annotations
-
-from backend.schema import Candidate, Clip, Jurisdiction, VerdictRecord
 
 from services.agents.base import PlatformAgent
 from services.agents.generic_agent import GenericAgent

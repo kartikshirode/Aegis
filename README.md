@@ -42,7 +42,7 @@ Full alignment + what is deliberately *not* claimed: [docs/sdg-alignment.md](doc
 │   ├── storage.py                 — Firestore with LOCAL fallback
 │   ├── prompts/
 │   │   ├── verdict.txt            — Gemini verdict system prompt (the novelty)
-│   │   ├── deepfake_verdict.txt   — likeness-abuse classifier prompt
+│   │   ├── deepfake_verdict.txt   — likeness-abuse classifier prompt (Phase 2; not yet wired)
 │   │   ├── takedown_us.txt        — DMCA §512(c) template
 │   │   └── takedown_in.txt        — IT Rules 2021 template
 │   ├── requirements.txt

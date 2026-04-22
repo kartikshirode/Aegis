@@ -1,7 +1,7 @@
 # Dataset Card — DFDC (Deepfake Detection Challenge)
 
 **Source paper:** Dolhansky, B. et al. *The DeepFake Detection Challenge (DFDC) Dataset.* arXiv:2006.07397 (2020).
-**Use in Aegis:** training and held-out evaluation set for the deepfake detection pillar (`backend/prompts/deepfake_verdict.txt` in Phase 1; fine-tuned head in Phase 2).
+**Use in Aegis:** held-out evaluation set for the deepfake detection pillar. Phase 1 uses the deepfake rubric embedded in `backend/prompts/verdict.txt`; `backend/prompts/deepfake_verdict.txt` is a Phase-2 escalation prompt, ready but not yet wired. Fine-tuned classifier head is Phase 2.
 
 ## Composition
 
@@ -17,7 +17,7 @@
 ## Where it lives
 
 - Not committed to this repository. License and size preclude redistribution.
-- Phase-1 teams fetch the subset per the DFDC license and store locally. The consumer of this data is `backend/prompts/deepfake_verdict.txt` (zero-shot Gemini inference; no training) and, in Phase 2, a Vertex AI classifier fine-tune.
+- Phase-1 teams fetch the subset per the DFDC license and store locally. In Phase 1 the data is consumed only for held-out benchmark eval of the deepfake rubric inside `verdict.txt` (zero-shot Gemini inference; no training). Phase 2 adds (a) the dedicated `deepfake_verdict.txt` escalation path and (b) a Vertex AI classifier fine-tune on top of it.
 
 ## Known limitations
 

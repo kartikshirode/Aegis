@@ -37,3 +37,21 @@ All captions in the video are bilingual — English top, Devanagari Hindi below.
 ## Total runtime after changes
 
 Target stays at **2:45** on the nose. The cold open is shorter than the original (22 seconds narration vs 30 seconds), reclaiming ~8 seconds that go into the jurisdiction-aware takedown side-by-side at 2:00–2:20.
+
+## Pre-flight before recording
+
+Do this **once**, immediately before hitting Record. It takes 10 seconds and prevents the worst outcome: recording the demo against LOCAL mocks without realising.
+
+```
+curl $API_URL/demo/status
+```
+
+Confirm the response shows:
+- `"index_mode": "GCP"` (not `LOCAL`)
+- `"storage_mode": "GCP"`
+- `"kms_mode": "GCP"`
+- `"gemini_live": true`
+- `"vector_search_configured": true`
+- `"mock_endpoints"` — all four set to `true`
+
+If any line says `"LOCAL"` or `false`, stop and fix the env on the Cloud Run revision. Recording a demo against LOCAL mocks produces numbers that are not real and a flow that slightly misbehaves — both will cost you credibility when judges retry the public URL.

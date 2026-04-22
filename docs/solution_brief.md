@@ -31,7 +31,7 @@ Aegis is an authenticity layer for sport. At publication, Aegis cryptographicall
                        │    crawler            │ ──► public URLs (robots.txt-aware)
                        │    matcher            │ ──► pHash + Vector Search
                        │    classifier         │ ──► Gemini 2.5 Pro verdict.txt
-                       │    deepfake           │ ──► Gemini deepfake_verdict.txt
+                       │    deepfake (Phase 2) │ ──► Gemini deepfake_verdict.txt
                        │    takedown agents    │ ──► mock platform endpoints
                        └───────────┬───────────┘
                                    │
@@ -53,7 +53,7 @@ Detailed architecture diagram: `docs/architecture.png` (to be exported from draw
 - The prompt is version-controlled and is considered part of the novelty of the system (see §4).
 
 ### Deepfake detection as a first-class pillar, not a bolt-on
-- Dedicated `backend/prompts/deepfake_verdict.txt` with an explicit cue taxonomy (temporal face flicker, blend seam, lip-sync drift, spectral flatness, prosody monotony, reverb mismatch, and more).
+- Dedicated `backend/prompts/deepfake_verdict.txt` with an explicit cue taxonomy (temporal face flicker, blend seam, lip-sync drift, spectral flatness, prosody monotony, reverb mismatch, and more). **Phase 2** wires the escalation path that calls this prompt on borderline `DEEPFAKE_MANIPULATION` verdicts from the primary prompt; Phase 1 uses the deepfake rubric embedded in `verdict.txt`.
 - Athlete-facing view is the default unauthenticated landing page, bilingual English/Hindi.
 - Opt-in enrolment; no likeness dossier without explicit consent.
 
@@ -137,7 +137,7 @@ aegis/
 │   ├── storage.py                (Firestore with LOCAL fallback)
 │   ├── prompts/
 │   │   ├── verdict.txt           (Gemini verdict system prompt)
-│   │   ├── deepfake_verdict.txt  (likeness-abuse classifier prompt)
+│   │   ├── deepfake_verdict.txt  (Phase 2 escalation prompt; not yet wired)
 │   │   ├── takedown_us.txt       (DMCA §512(c) template)
 │   │   └── takedown_in.txt       (IT Rules 2021 template)
 │   ├── requirements.txt

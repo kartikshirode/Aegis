@@ -5,7 +5,9 @@
       "WebFetch(domain:promptwars.in)",
       "WebFetch(domain:developers.google.com)",
       "WebFetch(domain:internshala.com)",
-      "WebFetch(domain:blog.google)"
+      "WebFetch(domain:blog.google)",
+      "Bash(python -c ' *)",
+      "Bash(python -m pytest tests/test_agents.py tests/test_merkle.py -v)"
     ]
   }
 }

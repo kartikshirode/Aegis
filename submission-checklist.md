@@ -56,6 +56,7 @@ Before submit, run the benchmark against the variants set and confirm:
 
 ## Final human checks (last 30 minutes before submit)
 
+- [ ] **Pre-flight: `curl $API_URL/demo/status` returns `gemini_live: true` AND `vector_search_configured: true`.** If either is `false`, the demo will silently fall back to LOCAL mocks and the numbers you record will not be real. Fix env vars before going further.
 - [ ] Open MVP URL on a clean Chrome profile (incognito). Verify athlete view renders; verify Hindi toggle works; verify `/verify/<some-id>` returns a structured result.
 - [ ] Open GitHub repo, check README preview, check LICENSE present, verify CI (if set up) is green.
 - [ ] Play the demo video once end-to-end on phone speakers — confirm captions are legible at small size.

@@ -16,12 +16,12 @@ Production wiring (GCP creds, Firestore client, Vector Search index) reads from 
 
 from __future__ import annotations
 
-import asyncio
 import os
 import tempfile
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Literal
 from uuid import uuid4
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
@@ -35,11 +35,8 @@ from backend import vector_index
 from backend.provenance import merkle as merkle_mod
 from backend.schema import (
     AthleteEnrollment,
-    Candidate,
-    Clip,
     MerkleReceipt,
     RightsHolderContact,
-    VerdictRecord,
 )
 from backend.storage import AegisStore
 
@@ -220,7 +217,9 @@ def takedown_route(req: TakedownRequest) -> dict:
 
 class EnrollRequest(BaseModel):
     display_name: str
-    preferred_language: str = "en-hi"
+    # Pin to the same Literal as AthleteEnrollment so bad values produce 422
+    # at the request boundary, not a 500 inside the handler.
+    preferred_language: Literal["en", "hi", "en-hi"] = "en-hi"
 
 
 @app.post("/athlete/enroll")
@@ -228,7 +227,7 @@ def enroll_route(req: EnrollRequest) -> dict:
     enrollment = AthleteEnrollment(
         athlete_id=str(uuid4()),
         display_name=req.display_name,
-        preferred_language=req.preferred_language,  # type: ignore[arg-type]
+        preferred_language=req.preferred_language,
         enrolled_at=datetime.now(timezone.utc),
     )
     store.put_athlete(enrollment)
@@ -263,9 +262,12 @@ def anchor_route() -> dict:
 
 # ---------- Merkle batch buffer ----------
 #
-# Under FastAPI's thread-pool for sync handlers, appends + drains can race. A
-# plain threading.Lock is sufficient — we do not touch _PENDING from async
-# coroutines. If _anchor_leaf ever becomes awaitable, swap in an asyncio.Lock.
+# Both async handlers (running on the event loop) and sync handlers (running
+# on the starlette threadpool) call _anchor_leaf. threading.Lock handles both
+# safely — it is reentrant-safe across thread-pool workers and also cheap when
+# held briefly from the event loop. If _anchor_leaf itself ever becomes
+# awaitable and does any awaiting inside the critical section, swap in an
+# asyncio.Lock to avoid blocking the event loop.
 
 _PENDING: list[merkle_mod.Leaf] = []
 _PENDING_LOCK = threading.Lock()

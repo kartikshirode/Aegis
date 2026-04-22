@@ -6,9 +6,13 @@ Stage 1 — fast recall (< 100 ms):
     crosses an escalation threshold, pass to Stage 2.
 
 Stage 2 — semantic verification (Gemini 2.5 Pro):
-    Pass (ORIGINAL, CANDIDATE) pair to Gemini with prompts/verdict.txt.
-    Parse JSON. If DEEPFAKE_MANIPULATION and confidence borderline, escalate
-    to the dedicated deepfake_verdict.txt classifier.
+    Pass the CANDIDATE (plus optionally the ORIGINAL when signals are
+    ambiguous) to Gemini with prompts/verdict.txt. Parse JSON.
+
+Phase 1 uses the built-in deepfake rubric inside prompts/verdict.txt for
+synthesis detection. A dedicated escalation call to prompts/deepfake_verdict.txt
+on borderline DEEPFAKE_MANIPULATION verdicts is Phase 2 — the prompt is
+version-controlled and ready, the wiring is not.
 """
 
 from __future__ import annotations
@@ -42,7 +46,10 @@ PROMPTS_DIR = Path(__file__).parent / "prompts"
 # Do not edit in isolation; re-run benchmark/run.py after any change.
 PHASH_ESCALATE_DISTANCE = 12
 EMBEDDING_ESCALATE_COSINE = 0.78
-DEEPFAKE_ESCALATION_CONFIDENCE = 0.60
+# The dedicated deepfake escalation path (calling prompts/deepfake_verdict.txt
+# when the primary verdict returns DEEPFAKE_MANIPULATION at borderline
+# confidence) is Phase-2 work. Phase 1 relies on the primary verdict prompt's
+# built-in deepfake rubric — see prompts/verdict.txt.
 
 
 @dataclass

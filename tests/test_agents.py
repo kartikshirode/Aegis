@@ -38,22 +38,31 @@ def test_telegram_with_indian_caption_prefers_india():
     assert pick_jurisdiction(c) == Jurisdiction.IN
 
 
-def test_unknown_platform_routes_to_generic_agent_other_jurisdiction():
-    # Unknown platforms MUST NOT silently borrow XAgent's DMCA-to-Twitter shape.
-    # GenericAgent returns OTHER by default (or honours explicit host_country).
-    c = _mk_candidate("unknown_platform_zzz")
-    assert pick_jurisdiction(c) == Jurisdiction.OTHER
+def test_schema_rejects_unknown_platform_strings():
+    # First line of defence: Candidate.platform is a Literal, so arbitrary typos
+    # never reach the agent registry. This guards against the "platfrom=telegrum"
+    # scenario from audit v2 at the API boundary.
+    import pytest
+    with pytest.raises(Exception):
+        _mk_candidate("unknown_platform_zzz")
 
-    c_in = _mk_candidate("unknown_platform_zzz", host_country="IN")
-    assert pick_jurisdiction(c_in) == Jurisdiction.IN
+
+def test_schema_allowed_but_unregistered_platform_routes_to_generic():
+    # `other` and `mock` are allowed by the Literal but have no explicit agent.
+    # They must NOT silently borrow XAgent's DMCA-to-Twitter envelope —
+    # they route to GenericAgent with OTHER jurisdiction.
+    c_other = _mk_candidate("other")
+    assert pick_jurisdiction(c_other) == Jurisdiction.OTHER
+
+    c_other_in = _mk_candidate("other", host_country="IN")
+    assert pick_jurisdiction(c_other_in) == Jurisdiction.IN
 
 
 def test_generic_agent_provider_is_placeholder_not_twitter():
     from services.agents import get as get_agent
-    agent = get_agent("unknown_platform_zzz")
+    agent = get_agent("other")
     assert "twitter" not in agent.designated_agent_email().lower()
-    assert "platform not recognised" in agent.host_provider().lower() \
-        or "[" in agent.host_provider()
+    assert "[" in agent.host_provider()  # placeholder bracket style
 
 
 def test_agent_submit_endpoint_resolves_from_env(monkeypatch):

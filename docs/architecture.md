@@ -36,7 +36,7 @@ A single diagram, a table of services, and a walk-through of the flagship scenar
   │  robots.txt,     │   ┌──────────────────────┐                                      │
   │  public URLs     │   │ backend/detect.py    │── Stage-1: pHash + Vector Search ───┘
   └──────────────────┘   │                      │── Stage-2: Gemini verdict.txt
-                         │                      │── if deepfake: deepfake_verdict.txt
+                         │                      │── (Phase 2: deepfake_verdict.txt on borderline)
                          └─────────┬────────────┘
                                    │
                                    ▼
@@ -102,7 +102,7 @@ detect:        POST /detect
                └─ detect.fingerprint_candidate (phashes + embeddings)
                └─ detect.stage1_retrieve → vector_index.query_top_k
                └─ detect.stage2_verdict → Gemini 2.5 Pro w/ prompts/verdict.txt
-                  └─ if ambiguous synthetic: prompts/deepfake_verdict.txt
+                  └─ (Phase 2: if ambiguous synthetic → prompts/deepfake_verdict.txt)
                └─ store.put_verdict
                └─ provenance.merkle → anchor leaf for verdict
                ◄ {verdict, confidence, recommended_action, athlete_alert}

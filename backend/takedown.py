@@ -138,7 +138,10 @@ def file_notice(notice: TakedownNotice, *, endpoint: str | None = None) -> Taked
         )
         resp.raise_for_status()
         data = resp.json()
-    except httpx.HTTPError:
+    except (httpx.HTTPError, ValueError):
+        # ValueError catches a 200-OK response whose body isn't JSON — e.g. a
+        # Cloudflare HTML block page. Without this, the notice leaks out as an
+        # unhandled exception and is never persisted in REJECTED state.
         notice.status = "REJECTED"
         notice.filed_at = datetime.now(timezone.utc)
         notice.filed_to_endpoint = target
