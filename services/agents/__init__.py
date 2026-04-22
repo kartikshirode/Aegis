@@ -13,6 +13,7 @@ from __future__ import annotations
 from backend.schema import Candidate, Clip, Jurisdiction, VerdictRecord
 
 from services.agents.base import PlatformAgent
+from services.agents.generic_agent import GenericAgent
 from services.agents.meta_agent import MetaAgent
 from services.agents.telegram_agent import TelegramAgent
 from services.agents.x_agent import XAgent
@@ -25,10 +26,19 @@ _REGISTRY: dict[str, PlatformAgent] = {
     "telegram": TelegramAgent(),
 }
 
+_GENERIC = GenericAgent()
+
 
 def get(platform: str) -> PlatformAgent:
-    """Return the agent for a platform, or a safe fallback for unknown ones."""
-    return _REGISTRY.get(platform, XAgent())  # DMCA §512(c) shape is the safe default.
+    """Return the agent for a known platform, or a provider-unbranded GenericAgent.
+
+    Unknown platforms MUST NOT silently borrow XAgent's DMCA-to-Twitter
+    envelope — a typo like `platfrom="telegrum"` would otherwise file a
+    malformed notice at `copyright@twitter.com` for a host that isn't X
+    (audit v2 residual design drift).
+    """
+    return _REGISTRY.get(platform, _GENERIC)
 
 
 __all__ = ["PlatformAgent", "get"]
+

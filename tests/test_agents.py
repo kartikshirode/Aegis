@@ -38,10 +38,22 @@ def test_telegram_with_indian_caption_prefers_india():
     assert pick_jurisdiction(c) == Jurisdiction.IN
 
 
-def test_unknown_platform_falls_back_to_other_or_us():
+def test_unknown_platform_routes_to_generic_agent_other_jurisdiction():
+    # Unknown platforms MUST NOT silently borrow XAgent's DMCA-to-Twitter shape.
+    # GenericAgent returns OTHER by default (or honours explicit host_country).
     c = _mk_candidate("unknown_platform_zzz")
-    j = pick_jurisdiction(c)
-    assert j in (Jurisdiction.OTHER, Jurisdiction.US)  # fallback agent is XAgent -> US
+    assert pick_jurisdiction(c) == Jurisdiction.OTHER
+
+    c_in = _mk_candidate("unknown_platform_zzz", host_country="IN")
+    assert pick_jurisdiction(c_in) == Jurisdiction.IN
+
+
+def test_generic_agent_provider_is_placeholder_not_twitter():
+    from services.agents import get as get_agent
+    agent = get_agent("unknown_platform_zzz")
+    assert "twitter" not in agent.designated_agent_email().lower()
+    assert "platform not recognised" in agent.host_provider().lower() \
+        or "[" in agent.host_provider()
 
 
 def test_agent_submit_endpoint_resolves_from_env(monkeypatch):
