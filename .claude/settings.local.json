@@ -7,7 +7,11 @@
       "WebFetch(domain:internshala.com)",
       "WebFetch(domain:blog.google)",
       "Bash(python -c ' *)",
-      "Bash(python -m pytest tests/test_agents.py tests/test_merkle.py -v)"
+      "Bash(python -m pytest tests/test_agents.py tests/test_merkle.py -v)",
+      "Bash(rm -rf data/adversarial)",
+      "Bash(python benchmark/generate_variants.py --originals data/originals --out data/adversarial --seed 2026 --n-originals 30 --chain-samples 50)",
+      "Read(//c/Windows/Fonts/**)",
+      "Read(//c/Windows/Fonts//**)"
     ]
   }
 }

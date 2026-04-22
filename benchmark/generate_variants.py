@@ -30,6 +30,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import platform
 import random
 import subprocess
 from dataclasses import asdict, dataclass
@@ -39,6 +41,32 @@ from typing import Callable, Iterable
 SINGLE_TRANSFORMS = ("reencode", "crop", "mirror", "upscale", "overlay")
 BITRATES_KBPS = (200, 400, 800, 1500, 3000)
 CROP_RATIOS = (0.85, 0.70, 0.55)
+
+# libx264 requires even width AND height. Float-multiplied filter expressions
+# (iw/0.55, etc.) emit odd-by-one pixels due to binary representation of 0.55.
+# Append this filter to every video filter chain as the last stage to snap.
+EVEN_DIMS_FILTER = "scale=trunc(iw/2)*2:trunc(ih/2)*2"
+
+
+def _drawtext_fontfile() -> str:
+    """Return an ffmpeg-escaped font path for drawtext.
+
+    ffmpeg's drawtext uses `:` as option delimiter, so Windows drive-letter
+    colons must be escaped as `\\:`. On Windows: Arial. On *nix: DejaVuSans
+    which is present on most distros.
+    """
+    if platform.system() == "Windows":
+        p = "C:/Windows/Fonts/arial.ttf"
+        return p.replace(":", r"\:")
+    candidates = (
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/System/Library/Fonts/Supplemental/Arial.ttf",
+        "/Library/Fonts/Arial.ttf",
+    )
+    for c in candidates:
+        if os.path.exists(c):
+            return c
+    return "DejaVuSans"  # best-effort fallback; ffmpeg errors loudly if missing
 
 
 @dataclass
@@ -104,38 +132,47 @@ def _emit_single(src: Path, kind: str, out: Path, rng: random.Random) -> list[Va
     raise ValueError(kind)
 
 
+def _with_even_dims(vf: str) -> str:
+    """Guarantee libx264-compatible output dims by appending the snap-to-even filter."""
+    return f"{vf},{EVEN_DIMS_FILTER}"
+
+
 def _reencode(src: Path, kbps: int, out: Path) -> VariantRecord:
     dst = out / f"{src.stem}_reencode_{kbps}k.mp4"
-    _ffmpeg(["-i", str(src), "-b:v", f"{kbps}k", "-c:v", "libx264", "-preset", "veryfast", "-c:a", "aac", str(dst)])
+    # Re-encode preserves input dims but some HMDB-51 clips are odd-height;
+    # apply the safety filter unconditionally.
+    _ffmpeg(["-i", str(src), "-vf", EVEN_DIMS_FILTER, "-b:v", f"{kbps}k", "-c:v", "libx264", "-preset", "veryfast", "-c:a", "aac", str(dst)])
     return VariantRecord(dst.stem, str(src), ["reencode"], {"kbps": kbps}, str(dst))
 
 
 def _crop(src: Path, ratio: float, out: Path) -> VariantRecord:
     dst = out / f"{src.stem}_crop_{int(ratio*100)}.mp4"
     # centered crop to `ratio` on both axes, then scale back to original size
-    vf = f"crop=iw*{ratio}:ih*{ratio}:iw*(1-{ratio})/2:ih*(1-{ratio})/2,scale=iw/{ratio}:ih/{ratio}"
+    vf = _with_even_dims(f"crop=iw*{ratio}:ih*{ratio}:iw*(1-{ratio})/2:ih*(1-{ratio})/2,scale=iw/{ratio}:ih/{ratio}")
     _ffmpeg(["-i", str(src), "-vf", vf, "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
     return VariantRecord(dst.stem, str(src), ["crop"], {"ratio": ratio}, str(dst))
 
 
 def _mirror(src: Path, out: Path) -> VariantRecord:
     dst = out / f"{src.stem}_mirror.mp4"
-    _ffmpeg(["-i", str(src), "-vf", "hflip", "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
+    _ffmpeg(["-i", str(src), "-vf", _with_even_dims("hflip"), "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
     return VariantRecord(dst.stem, str(src), ["mirror"], {}, str(dst))
 
 
 def _upscale(src: Path, out: Path) -> VariantRecord:
     dst = out / f"{src.stem}_upscale2x.mp4"
-    _ffmpeg(["-i", str(src), "-vf", "scale=iw*2:ih*2:flags=lanczos", "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
+    _ffmpeg(["-i", str(src), "-vf", _with_even_dims("scale=iw*2:ih*2:flags=lanczos"), "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
     return VariantRecord(dst.stem, str(src), ["upscale"], {"factor": 2}, str(dst))
 
 
 def _overlay(src: Path, out: Path) -> VariantRecord:
     dst = out / f"{src.stem}_overlay.mp4"
-    # white text on dark semitransparent box, top-left
-    vf = (
+    # white text on dark semitransparent box, top-left.
+    # drawtext needs an explicit fontfile on Windows (no default font path).
+    font = _drawtext_fontfile()
+    vf = _with_even_dims(
         "drawbox=x=10:y=10:w=300:h=40:color=black@0.4:t=fill,"
-        "drawtext=text='LIVE STREAM':x=25:y=20:fontsize=22:fontcolor=white"
+        f"drawtext=fontfile='{font}':text='LIVE STREAM':x=25:y=20:fontsize=22:fontcolor=white"
     )
     _ffmpeg(["-i", str(src), "-vf", vf, "-c:v", "libx264", "-preset", "veryfast", "-c:a", "copy", str(dst)])
     return VariantRecord(dst.stem, str(src), ["overlay"], {}, str(dst))

@@ -1,0 +1,4366 @@
+[
+  {
+    "variant_id": "match-01_reencode_200k",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-01_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-01_reencode_400k",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-01_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-01_reencode_800k",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-01_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-01_reencode_1500k",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-01_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-01_reencode_3000k",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-01_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-01_crop_85",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-01_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-01_crop_70",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-01_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-01_crop_55",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-01_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-01_mirror",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-01_mirror.mp4"
+  },
+  {
+    "variant_id": "match-01_upscale2x",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-01_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-01_overlay",
+    "source": "data\\originals\\match-01.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-01_overlay.mp4"
+  },
+  {
+    "variant_id": "match-02_reencode_200k",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-02_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-02_reencode_400k",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-02_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-02_reencode_800k",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-02_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-02_reencode_1500k",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-02_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-02_reencode_3000k",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-02_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-02_crop_85",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-02_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-02_crop_70",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-02_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-02_crop_55",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-02_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-02_mirror",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-02_mirror.mp4"
+  },
+  {
+    "variant_id": "match-02_upscale2x",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-02_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-02_overlay",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-02_overlay.mp4"
+  },
+  {
+    "variant_id": "match-03_reencode_200k",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-03_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-03_reencode_400k",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-03_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-03_reencode_800k",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-03_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-03_reencode_1500k",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-03_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-03_reencode_3000k",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-03_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-03_crop_85",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-03_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-03_crop_70",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-03_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-03_crop_55",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-03_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-03_mirror",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-03_mirror.mp4"
+  },
+  {
+    "variant_id": "match-03_upscale2x",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-03_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-03_overlay",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-03_overlay.mp4"
+  },
+  {
+    "variant_id": "match-04_reencode_200k",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-04_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-04_reencode_400k",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-04_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-04_reencode_800k",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-04_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-04_reencode_1500k",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-04_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-04_reencode_3000k",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-04_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-04_crop_85",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-04_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-04_crop_70",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-04_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-04_crop_55",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-04_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-04_mirror",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-04_mirror.mp4"
+  },
+  {
+    "variant_id": "match-04_upscale2x",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-04_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-04_overlay",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-04_overlay.mp4"
+  },
+  {
+    "variant_id": "match-05_reencode_200k",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-05_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-05_reencode_400k",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-05_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-05_reencode_800k",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-05_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-05_reencode_1500k",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-05_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-05_reencode_3000k",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-05_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-05_crop_85",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-05_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-05_crop_70",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-05_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-05_crop_55",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-05_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-05_mirror",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-05_mirror.mp4"
+  },
+  {
+    "variant_id": "match-05_upscale2x",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-05_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-05_overlay",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-05_overlay.mp4"
+  },
+  {
+    "variant_id": "match-06_reencode_200k",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-06_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-06_reencode_400k",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-06_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-06_reencode_800k",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-06_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-06_reencode_1500k",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-06_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-06_reencode_3000k",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-06_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-06_crop_85",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-06_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-06_crop_70",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-06_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-06_crop_55",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-06_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-06_mirror",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-06_mirror.mp4"
+  },
+  {
+    "variant_id": "match-06_upscale2x",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-06_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-06_overlay",
+    "source": "data\\originals\\match-06.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-06_overlay.mp4"
+  },
+  {
+    "variant_id": "match-07_reencode_200k",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-07_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-07_reencode_400k",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-07_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-07_reencode_800k",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-07_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-07_reencode_1500k",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-07_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-07_reencode_3000k",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-07_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-07_crop_85",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-07_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-07_crop_70",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-07_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-07_crop_55",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-07_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-07_mirror",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-07_mirror.mp4"
+  },
+  {
+    "variant_id": "match-07_upscale2x",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-07_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-07_overlay",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-07_overlay.mp4"
+  },
+  {
+    "variant_id": "match-08_reencode_200k",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-08_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-08_reencode_400k",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-08_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-08_reencode_800k",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-08_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-08_reencode_1500k",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-08_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-08_reencode_3000k",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-08_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-08_crop_85",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-08_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-08_crop_70",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-08_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-08_crop_55",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-08_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-08_mirror",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-08_mirror.mp4"
+  },
+  {
+    "variant_id": "match-08_upscale2x",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-08_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-08_overlay",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-08_overlay.mp4"
+  },
+  {
+    "variant_id": "match-09_reencode_200k",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-09_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-09_reencode_400k",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-09_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-09_reencode_800k",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-09_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-09_reencode_1500k",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-09_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-09_reencode_3000k",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-09_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-09_crop_85",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-09_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-09_crop_70",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-09_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-09_crop_55",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-09_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-09_mirror",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-09_mirror.mp4"
+  },
+  {
+    "variant_id": "match-09_upscale2x",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-09_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-09_overlay",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-09_overlay.mp4"
+  },
+  {
+    "variant_id": "match-10_reencode_200k",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-10_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-10_reencode_400k",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-10_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-10_reencode_800k",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-10_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-10_reencode_1500k",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-10_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-10_reencode_3000k",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-10_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-10_crop_85",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-10_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-10_crop_70",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-10_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-10_crop_55",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-10_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-10_mirror",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-10_mirror.mp4"
+  },
+  {
+    "variant_id": "match-10_upscale2x",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-10_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-10_overlay",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-10_overlay.mp4"
+  },
+  {
+    "variant_id": "match-11_reencode_200k",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-11_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-11_reencode_400k",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-11_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-11_reencode_800k",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-11_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-11_reencode_1500k",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-11_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-11_reencode_3000k",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-11_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-11_crop_85",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-11_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-11_crop_70",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-11_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-11_crop_55",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-11_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-11_mirror",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-11_mirror.mp4"
+  },
+  {
+    "variant_id": "match-11_upscale2x",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-11_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-11_overlay",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-11_overlay.mp4"
+  },
+  {
+    "variant_id": "match-12_reencode_200k",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-12_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-12_reencode_400k",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-12_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-12_reencode_800k",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-12_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-12_reencode_1500k",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-12_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-12_reencode_3000k",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-12_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-12_crop_85",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-12_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-12_crop_70",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-12_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-12_crop_55",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-12_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-12_mirror",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-12_mirror.mp4"
+  },
+  {
+    "variant_id": "match-12_upscale2x",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-12_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-12_overlay",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-12_overlay.mp4"
+  },
+  {
+    "variant_id": "match-13_reencode_200k",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-13_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-13_reencode_400k",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-13_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-13_reencode_800k",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-13_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-13_reencode_1500k",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-13_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-13_reencode_3000k",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-13_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-13_crop_85",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-13_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-13_crop_70",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-13_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-13_crop_55",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-13_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-13_mirror",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-13_mirror.mp4"
+  },
+  {
+    "variant_id": "match-13_upscale2x",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-13_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-13_overlay",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-13_overlay.mp4"
+  },
+  {
+    "variant_id": "match-14_reencode_200k",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-14_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-14_reencode_400k",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-14_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-14_reencode_800k",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-14_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-14_reencode_1500k",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-14_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-14_reencode_3000k",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-14_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-14_crop_85",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-14_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-14_crop_70",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-14_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-14_crop_55",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-14_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-14_mirror",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-14_mirror.mp4"
+  },
+  {
+    "variant_id": "match-14_upscale2x",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-14_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-14_overlay",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-14_overlay.mp4"
+  },
+  {
+    "variant_id": "match-15_reencode_200k",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-15_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-15_reencode_400k",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-15_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-15_reencode_800k",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-15_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-15_reencode_1500k",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-15_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-15_reencode_3000k",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-15_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-15_crop_85",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-15_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-15_crop_70",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-15_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-15_crop_55",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-15_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-15_mirror",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-15_mirror.mp4"
+  },
+  {
+    "variant_id": "match-15_upscale2x",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-15_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-15_overlay",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-15_overlay.mp4"
+  },
+  {
+    "variant_id": "match-16_reencode_200k",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-16_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-16_reencode_400k",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-16_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-16_reencode_800k",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-16_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-16_reencode_1500k",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-16_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-16_reencode_3000k",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-16_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-16_crop_85",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-16_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-16_crop_70",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-16_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-16_crop_55",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-16_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-16_mirror",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-16_mirror.mp4"
+  },
+  {
+    "variant_id": "match-16_upscale2x",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-16_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-16_overlay",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-16_overlay.mp4"
+  },
+  {
+    "variant_id": "match-17_reencode_200k",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-17_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-17_reencode_400k",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-17_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-17_reencode_800k",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-17_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-17_reencode_1500k",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-17_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-17_reencode_3000k",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-17_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-17_crop_85",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-17_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-17_crop_70",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-17_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-17_crop_55",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-17_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-17_mirror",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-17_mirror.mp4"
+  },
+  {
+    "variant_id": "match-17_upscale2x",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-17_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-17_overlay",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-17_overlay.mp4"
+  },
+  {
+    "variant_id": "match-18_reencode_200k",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-18_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-18_reencode_400k",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-18_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-18_reencode_800k",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-18_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-18_reencode_1500k",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-18_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-18_reencode_3000k",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-18_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-18_crop_85",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-18_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-18_crop_70",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-18_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-18_crop_55",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-18_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-18_mirror",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-18_mirror.mp4"
+  },
+  {
+    "variant_id": "match-18_upscale2x",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-18_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-18_overlay",
+    "source": "data\\originals\\match-18.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-18_overlay.mp4"
+  },
+  {
+    "variant_id": "match-19_reencode_200k",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-19_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-19_reencode_400k",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-19_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-19_reencode_800k",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-19_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-19_reencode_1500k",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-19_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-19_reencode_3000k",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-19_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-19_crop_85",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-19_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-19_crop_70",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-19_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-19_crop_55",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-19_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-19_mirror",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-19_mirror.mp4"
+  },
+  {
+    "variant_id": "match-19_upscale2x",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-19_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-19_overlay",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-19_overlay.mp4"
+  },
+  {
+    "variant_id": "match-20_reencode_200k",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-20_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-20_reencode_400k",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-20_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-20_reencode_800k",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-20_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-20_reencode_1500k",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-20_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-20_reencode_3000k",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-20_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-20_crop_85",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-20_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-20_crop_70",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-20_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-20_crop_55",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-20_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-20_mirror",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-20_mirror.mp4"
+  },
+  {
+    "variant_id": "match-20_upscale2x",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-20_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-20_overlay",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-20_overlay.mp4"
+  },
+  {
+    "variant_id": "match-21_reencode_200k",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-21_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-21_reencode_400k",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-21_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-21_reencode_800k",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-21_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-21_reencode_1500k",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-21_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-21_reencode_3000k",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-21_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-21_crop_85",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-21_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-21_crop_70",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-21_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-21_crop_55",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-21_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-21_mirror",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-21_mirror.mp4"
+  },
+  {
+    "variant_id": "match-21_upscale2x",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-21_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-21_overlay",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-21_overlay.mp4"
+  },
+  {
+    "variant_id": "match-22_reencode_200k",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-22_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-22_reencode_400k",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-22_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-22_reencode_800k",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-22_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-22_reencode_1500k",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-22_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-22_reencode_3000k",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-22_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-22_crop_85",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-22_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-22_crop_70",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-22_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-22_crop_55",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-22_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-22_mirror",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-22_mirror.mp4"
+  },
+  {
+    "variant_id": "match-22_upscale2x",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-22_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-22_overlay",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-22_overlay.mp4"
+  },
+  {
+    "variant_id": "match-23_reencode_200k",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-23_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-23_reencode_400k",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-23_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-23_reencode_800k",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-23_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-23_reencode_1500k",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-23_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-23_reencode_3000k",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-23_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-23_crop_85",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-23_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-23_crop_70",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-23_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-23_crop_55",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-23_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-23_mirror",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-23_mirror.mp4"
+  },
+  {
+    "variant_id": "match-23_upscale2x",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-23_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-23_overlay",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-23_overlay.mp4"
+  },
+  {
+    "variant_id": "match-24_reencode_200k",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-24_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-24_reencode_400k",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-24_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-24_reencode_800k",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-24_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-24_reencode_1500k",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-24_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-24_reencode_3000k",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-24_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-24_crop_85",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-24_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-24_crop_70",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-24_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-24_crop_55",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-24_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-24_mirror",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-24_mirror.mp4"
+  },
+  {
+    "variant_id": "match-24_upscale2x",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-24_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-24_overlay",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-24_overlay.mp4"
+  },
+  {
+    "variant_id": "match-25_reencode_200k",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-25_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-25_reencode_400k",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-25_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-25_reencode_800k",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-25_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-25_reencode_1500k",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-25_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-25_reencode_3000k",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-25_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-25_crop_85",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-25_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-25_crop_70",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-25_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-25_crop_55",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-25_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-25_mirror",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-25_mirror.mp4"
+  },
+  {
+    "variant_id": "match-25_upscale2x",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-25_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-25_overlay",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-25_overlay.mp4"
+  },
+  {
+    "variant_id": "match-26_reencode_200k",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-26_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-26_reencode_400k",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-26_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-26_reencode_800k",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-26_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-26_reencode_1500k",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-26_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-26_reencode_3000k",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-26_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-26_crop_85",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-26_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-26_crop_70",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-26_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-26_crop_55",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-26_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-26_mirror",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-26_mirror.mp4"
+  },
+  {
+    "variant_id": "match-26_upscale2x",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-26_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-26_overlay",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-26_overlay.mp4"
+  },
+  {
+    "variant_id": "match-27_reencode_200k",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-27_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-27_reencode_400k",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-27_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-27_reencode_800k",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-27_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-27_reencode_1500k",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-27_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-27_reencode_3000k",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-27_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-27_crop_85",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-27_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-27_crop_70",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-27_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-27_crop_55",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-27_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-27_mirror",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-27_mirror.mp4"
+  },
+  {
+    "variant_id": "match-27_upscale2x",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-27_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-27_overlay",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-27_overlay.mp4"
+  },
+  {
+    "variant_id": "match-28_reencode_200k",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-28_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-28_reencode_400k",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-28_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-28_reencode_800k",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-28_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-28_reencode_1500k",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-28_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-28_reencode_3000k",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-28_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-28_crop_85",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-28_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-28_crop_70",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-28_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-28_crop_55",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-28_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-28_mirror",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-28_mirror.mp4"
+  },
+  {
+    "variant_id": "match-28_upscale2x",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-28_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-28_overlay",
+    "source": "data\\originals\\match-28.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-28_overlay.mp4"
+  },
+  {
+    "variant_id": "match-29_reencode_200k",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-29_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-29_reencode_400k",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-29_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-29_reencode_800k",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-29_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-29_reencode_1500k",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-29_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-29_reencode_3000k",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-29_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-29_crop_85",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-29_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-29_crop_70",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-29_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-29_crop_55",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-29_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-29_mirror",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-29_mirror.mp4"
+  },
+  {
+    "variant_id": "match-29_upscale2x",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-29_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-29_overlay",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-29_overlay.mp4"
+  },
+  {
+    "variant_id": "match-30_reencode_200k",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 200
+    },
+    "path": "data\\adversarial\\match-30_reencode_200k.mp4"
+  },
+  {
+    "variant_id": "match-30_reencode_400k",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 400
+    },
+    "path": "data\\adversarial\\match-30_reencode_400k.mp4"
+  },
+  {
+    "variant_id": "match-30_reencode_800k",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 800
+    },
+    "path": "data\\adversarial\\match-30_reencode_800k.mp4"
+  },
+  {
+    "variant_id": "match-30_reencode_1500k",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 1500
+    },
+    "path": "data\\adversarial\\match-30_reencode_1500k.mp4"
+  },
+  {
+    "variant_id": "match-30_reencode_3000k",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "reencode"
+    ],
+    "params": {
+      "kbps": 3000
+    },
+    "path": "data\\adversarial\\match-30_reencode_3000k.mp4"
+  },
+  {
+    "variant_id": "match-30_crop_85",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.85
+    },
+    "path": "data\\adversarial\\match-30_crop_85.mp4"
+  },
+  {
+    "variant_id": "match-30_crop_70",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.7
+    },
+    "path": "data\\adversarial\\match-30_crop_70.mp4"
+  },
+  {
+    "variant_id": "match-30_crop_55",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "crop"
+    ],
+    "params": {
+      "ratio": 0.55
+    },
+    "path": "data\\adversarial\\match-30_crop_55.mp4"
+  },
+  {
+    "variant_id": "match-30_mirror",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "mirror"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-30_mirror.mp4"
+  },
+  {
+    "variant_id": "match-30_upscale2x",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "upscale"
+    ],
+    "params": {
+      "factor": 2
+    },
+    "path": "data\\adversarial\\match-30_upscale2x.mp4"
+  },
+  {
+    "variant_id": "match-30_overlay",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "overlay"
+    ],
+    "params": {},
+    "path": "data\\adversarial\\match-30_overlay.mp4"
+  },
+  {
+    "variant_id": "match-04_chain_overlay_reencode_upscale",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "overlay",
+      "reencode",
+      "upscale"
+    ],
+    "params": {
+      "overlay": {},
+      "reencode": {
+        "kbps": 3000
+      },
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-04_chain_overlay_reencode_upscale.mp4"
+  },
+  {
+    "variant_id": "match-20_chain_overlay_upscale_mirror",
+    "source": "data\\originals\\match-20.mp4",
+    "transform_chain": [
+      "overlay",
+      "upscale",
+      "mirror"
+    ],
+    "params": {
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-20_chain_overlay_upscale_mirror.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_reencode_overlay",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode",
+      "overlay"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 200
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-15_chain_reencode_overlay.mp4"
+  },
+  {
+    "variant_id": "match-10_chain_upscale_reencode",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "upscale",
+      "reencode"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 1500
+      }
+    },
+    "path": "data\\adversarial\\match-10_chain_upscale_reencode.mp4"
+  },
+  {
+    "variant_id": "match-22_chain_crop_upscale_overlay",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "crop",
+      "upscale",
+      "overlay"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.7
+      },
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-22_chain_crop_upscale_overlay.mp4"
+  },
+  {
+    "variant_id": "match-30_chain_upscale_reencode_mirror",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "upscale",
+      "reencode",
+      "mirror"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 800
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-30_chain_upscale_reencode_mirror.mp4"
+  },
+  {
+    "variant_id": "match-03_chain_mirror_upscale_reencode",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "mirror",
+      "upscale",
+      "reencode"
+    ],
+    "params": {
+      "mirror": {},
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 3000
+      }
+    },
+    "path": "data\\adversarial\\match-03_chain_mirror_upscale_reencode.mp4"
+  },
+  {
+    "variant_id": "match-10_chain_mirror_overlay",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "mirror",
+      "overlay"
+    ],
+    "params": {
+      "mirror": {},
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-10_chain_mirror_overlay.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_reencode_upscale_mirror",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "reencode",
+      "upscale",
+      "mirror"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 3000
+      },
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-15_chain_reencode_upscale_mirror.mp4"
+  },
+  {
+    "variant_id": "match-16_chain_upscale_overlay",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "upscale",
+      "overlay"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-16_chain_upscale_overlay.mp4"
+  },
+  {
+    "variant_id": "match-13_chain_upscale_overlay_mirror",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "upscale",
+      "overlay",
+      "mirror"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {},
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-13_chain_upscale_overlay_mirror.mp4"
+  },
+  {
+    "variant_id": "match-17_chain_overlay_crop",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "overlay",
+      "crop"
+    ],
+    "params": {
+      "overlay": {},
+      "crop": {
+        "ratio": 0.85
+      }
+    },
+    "path": "data\\adversarial\\match-17_chain_overlay_crop.mp4"
+  },
+  {
+    "variant_id": "match-27_chain_overlay_reencode",
+    "source": "data\\originals\\match-27.mp4",
+    "transform_chain": [
+      "overlay",
+      "reencode"
+    ],
+    "params": {
+      "overlay": {},
+      "reencode": {
+        "kbps": 3000
+      }
+    },
+    "path": "data\\adversarial\\match-27_chain_overlay_reencode.mp4"
+  },
+  {
+    "variant_id": "match-14_chain_crop_upscale_reencode",
+    "source": "data\\originals\\match-14.mp4",
+    "transform_chain": [
+      "crop",
+      "upscale",
+      "reencode"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.85
+      },
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 1500
+      }
+    },
+    "path": "data\\adversarial\\match-14_chain_crop_upscale_reencode.mp4"
+  },
+  {
+    "variant_id": "match-22_chain_overlay_mirror_upscale",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "overlay",
+      "mirror",
+      "upscale"
+    ],
+    "params": {
+      "overlay": {},
+      "mirror": {},
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-22_chain_overlay_mirror_upscale.mp4"
+  },
+  {
+    "variant_id": "match-13_chain_overlay_upscale_crop",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "overlay",
+      "upscale",
+      "crop"
+    ],
+    "params": {
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      },
+      "crop": {
+        "ratio": 0.7
+      }
+    },
+    "path": "data\\adversarial\\match-13_chain_overlay_upscale_crop.mp4"
+  },
+  {
+    "variant_id": "match-07_chain_mirror_reencode_upscale",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "mirror",
+      "reencode",
+      "upscale"
+    ],
+    "params": {
+      "mirror": {},
+      "reencode": {
+        "kbps": 400
+      },
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-07_chain_mirror_reencode_upscale.mp4"
+  },
+  {
+    "variant_id": "match-21_chain_overlay_upscale_crop",
+    "source": "data\\originals\\match-21.mp4",
+    "transform_chain": [
+      "overlay",
+      "upscale",
+      "crop"
+    ],
+    "params": {
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      },
+      "crop": {
+        "ratio": 0.85
+      }
+    },
+    "path": "data\\adversarial\\match-21_chain_overlay_upscale_crop.mp4"
+  },
+  {
+    "variant_id": "match-09_chain_upscale_overlay_crop",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "upscale",
+      "overlay",
+      "crop"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {},
+      "crop": {
+        "ratio": 0.55
+      }
+    },
+    "path": "data\\adversarial\\match-09_chain_upscale_overlay_crop.mp4"
+  },
+  {
+    "variant_id": "match-22_chain_mirror_overlay",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "mirror",
+      "overlay"
+    ],
+    "params": {
+      "mirror": {},
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-22_chain_mirror_overlay.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_upscale_mirror",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "upscale",
+      "mirror"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-15_chain_upscale_mirror.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_upscale_overlay",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "upscale",
+      "overlay"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-15_chain_upscale_overlay.mp4"
+  },
+  {
+    "variant_id": "match-03_chain_upscale_mirror_reencode",
+    "source": "data\\originals\\match-03.mp4",
+    "transform_chain": [
+      "upscale",
+      "mirror",
+      "reencode"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {},
+      "reencode": {
+        "kbps": 400
+      }
+    },
+    "path": "data\\adversarial\\match-03_chain_upscale_mirror_reencode.mp4"
+  },
+  {
+    "variant_id": "match-24_chain_crop_upscale_reencode",
+    "source": "data\\originals\\match-24.mp4",
+    "transform_chain": [
+      "crop",
+      "upscale",
+      "reencode"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.85
+      },
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 200
+      }
+    },
+    "path": "data\\adversarial\\match-24_chain_crop_upscale_reencode.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_overlay_crop",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "overlay",
+      "crop"
+    ],
+    "params": {
+      "overlay": {},
+      "crop": {
+        "ratio": 0.85
+      }
+    },
+    "path": "data\\adversarial\\match-15_chain_overlay_crop.mp4"
+  },
+  {
+    "variant_id": "match-04_chain_overlay_mirror",
+    "source": "data\\originals\\match-04.mp4",
+    "transform_chain": [
+      "overlay",
+      "mirror"
+    ],
+    "params": {
+      "overlay": {},
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-04_chain_overlay_mirror.mp4"
+  },
+  {
+    "variant_id": "match-22_chain_crop_reencode_overlay",
+    "source": "data\\originals\\match-22.mp4",
+    "transform_chain": [
+      "crop",
+      "reencode",
+      "overlay"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.55
+      },
+      "reencode": {
+        "kbps": 3000
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-22_chain_crop_reencode_overlay.mp4"
+  },
+  {
+    "variant_id": "match-19_chain_crop_overlay_upscale",
+    "source": "data\\originals\\match-19.mp4",
+    "transform_chain": [
+      "crop",
+      "overlay",
+      "upscale"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.55
+      },
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-19_chain_crop_overlay_upscale.mp4"
+  },
+  {
+    "variant_id": "match-05_chain_reencode_upscale_mirror",
+    "source": "data\\originals\\match-05.mp4",
+    "transform_chain": [
+      "reencode",
+      "upscale",
+      "mirror"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 400
+      },
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-05_chain_reencode_upscale_mirror.mp4"
+  },
+  {
+    "variant_id": "match-30_chain_overlay_mirror",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "overlay",
+      "mirror"
+    ],
+    "params": {
+      "overlay": {},
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-30_chain_overlay_mirror.mp4"
+  },
+  {
+    "variant_id": "match-17_chain_upscale_crop_mirror",
+    "source": "data\\originals\\match-17.mp4",
+    "transform_chain": [
+      "upscale",
+      "crop",
+      "mirror"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "crop": {
+        "ratio": 0.85
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-17_chain_upscale_crop_mirror.mp4"
+  },
+  {
+    "variant_id": "match-13_chain_reencode_upscale",
+    "source": "data\\originals\\match-13.mp4",
+    "transform_chain": [
+      "reencode",
+      "upscale"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 200
+      },
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-13_chain_reencode_upscale.mp4"
+  },
+  {
+    "variant_id": "match-02_chain_mirror_reencode_upscale",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "mirror",
+      "reencode",
+      "upscale"
+    ],
+    "params": {
+      "mirror": {},
+      "reencode": {
+        "kbps": 3000
+      },
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-02_chain_mirror_reencode_upscale.mp4"
+  },
+  {
+    "variant_id": "match-16_chain_mirror_upscale_crop",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "mirror",
+      "upscale",
+      "crop"
+    ],
+    "params": {
+      "mirror": {},
+      "upscale": {
+        "factor": 2
+      },
+      "crop": {
+        "ratio": 0.85
+      }
+    },
+    "path": "data\\adversarial\\match-16_chain_mirror_upscale_crop.mp4"
+  },
+  {
+    "variant_id": "match-16_chain_overlay_crop_reencode",
+    "source": "data\\originals\\match-16.mp4",
+    "transform_chain": [
+      "overlay",
+      "crop",
+      "reencode"
+    ],
+    "params": {
+      "overlay": {},
+      "crop": {
+        "ratio": 0.55
+      },
+      "reencode": {
+        "kbps": 3000
+      }
+    },
+    "path": "data\\adversarial\\match-16_chain_overlay_crop_reencode.mp4"
+  },
+  {
+    "variant_id": "match-07_chain_overlay_mirror_crop",
+    "source": "data\\originals\\match-07.mp4",
+    "transform_chain": [
+      "overlay",
+      "mirror",
+      "crop"
+    ],
+    "params": {
+      "overlay": {},
+      "mirror": {},
+      "crop": {
+        "ratio": 0.55
+      }
+    },
+    "path": "data\\adversarial\\match-07_chain_overlay_mirror_crop.mp4"
+  },
+  {
+    "variant_id": "match-08_chain_overlay_upscale",
+    "source": "data\\originals\\match-08.mp4",
+    "transform_chain": [
+      "overlay",
+      "upscale"
+    ],
+    "params": {
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      }
+    },
+    "path": "data\\adversarial\\match-08_chain_overlay_upscale.mp4"
+  },
+  {
+    "variant_id": "match-02_chain_crop_reencode",
+    "source": "data\\originals\\match-02.mp4",
+    "transform_chain": [
+      "crop",
+      "reencode"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.55
+      },
+      "reencode": {
+        "kbps": 3000
+      }
+    },
+    "path": "data\\adversarial\\match-02_chain_crop_reencode.mp4"
+  },
+  {
+    "variant_id": "match-30_chain_upscale_crop",
+    "source": "data\\originals\\match-30.mp4",
+    "transform_chain": [
+      "upscale",
+      "crop"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "crop": {
+        "ratio": 0.7
+      }
+    },
+    "path": "data\\adversarial\\match-30_chain_upscale_crop.mp4"
+  },
+  {
+    "variant_id": "match-23_chain_crop_overlay",
+    "source": "data\\originals\\match-23.mp4",
+    "transform_chain": [
+      "crop",
+      "overlay"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.55
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-23_chain_crop_overlay.mp4"
+  },
+  {
+    "variant_id": "match-29_chain_crop_overlay",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "crop",
+      "overlay"
+    ],
+    "params": {
+      "crop": {
+        "ratio": 0.7
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-29_chain_crop_overlay.mp4"
+  },
+  {
+    "variant_id": "match-09_chain_overlay_upscale_reencode",
+    "source": "data\\originals\\match-09.mp4",
+    "transform_chain": [
+      "overlay",
+      "upscale",
+      "reencode"
+    ],
+    "params": {
+      "overlay": {},
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 1500
+      }
+    },
+    "path": "data\\adversarial\\match-09_chain_overlay_upscale_reencode.mp4"
+  },
+  {
+    "variant_id": "match-10_chain_mirror_crop",
+    "source": "data\\originals\\match-10.mp4",
+    "transform_chain": [
+      "mirror",
+      "crop"
+    ],
+    "params": {
+      "mirror": {},
+      "crop": {
+        "ratio": 0.7
+      }
+    },
+    "path": "data\\adversarial\\match-10_chain_mirror_crop.mp4"
+  },
+  {
+    "variant_id": "match-15_chain_upscale_mirror_crop",
+    "source": "data\\originals\\match-15.mp4",
+    "transform_chain": [
+      "upscale",
+      "mirror",
+      "crop"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "mirror": {},
+      "crop": {
+        "ratio": 0.85
+      }
+    },
+    "path": "data\\adversarial\\match-15_chain_upscale_mirror_crop.mp4"
+  },
+  {
+    "variant_id": "match-11_chain_upscale_reencode_mirror",
+    "source": "data\\originals\\match-11.mp4",
+    "transform_chain": [
+      "upscale",
+      "reencode",
+      "mirror"
+    ],
+    "params": {
+      "upscale": {
+        "factor": 2
+      },
+      "reencode": {
+        "kbps": 3000
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-11_chain_upscale_reencode_mirror.mp4"
+  },
+  {
+    "variant_id": "match-26_chain_reencode_crop_overlay",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode",
+      "crop",
+      "overlay"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 200
+      },
+      "crop": {
+        "ratio": 0.85
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-26_chain_reencode_crop_overlay.mp4"
+  },
+  {
+    "variant_id": "match-29_chain_mirror_upscale_overlay",
+    "source": "data\\originals\\match-29.mp4",
+    "transform_chain": [
+      "mirror",
+      "upscale",
+      "overlay"
+    ],
+    "params": {
+      "mirror": {},
+      "upscale": {
+        "factor": 2
+      },
+      "overlay": {}
+    },
+    "path": "data\\adversarial\\match-29_chain_mirror_upscale_overlay.mp4"
+  },
+  {
+    "variant_id": "match-26_chain_reencode_mirror",
+    "source": "data\\originals\\match-26.mp4",
+    "transform_chain": [
+      "reencode",
+      "mirror"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 400
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-26_chain_reencode_mirror.mp4"
+  },
+  {
+    "variant_id": "match-12_chain_reencode_mirror",
+    "source": "data\\originals\\match-12.mp4",
+    "transform_chain": [
+      "reencode",
+      "mirror"
+    ],
+    "params": {
+      "reencode": {
+        "kbps": 3000
+      },
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-12_chain_reencode_mirror.mp4"
+  },
+  {
+    "variant_id": "match-25_chain_overlay_mirror",
+    "source": "data\\originals\\match-25.mp4",
+    "transform_chain": [
+      "overlay",
+      "mirror"
+    ],
+    "params": {
+      "overlay": {},
+      "mirror": {}
+    },
+    "path": "data\\adversarial\\match-25_chain_overlay_mirror.mp4"
+  }
+]

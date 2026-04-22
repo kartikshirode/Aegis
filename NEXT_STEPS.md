@@ -8,19 +8,19 @@ Rough total time: **8–12 focused hours**, spreadable across team members. Do t
 
 ## 0. Final engineering to-dos (5 minutes each, can skip if you trust the audit)
 
-- [ ] Install **ffmpeg** on Windows (required for the variant generator, the demo clip pipeline, and the integration tests):
+- [-] Install **ffmpeg** on Windows (required for the variant generator, the demo clip pipeline, and the integration tests):
   ```powershell
   winget install Gyan.FFmpeg
   # reopen shell, then verify:
   ffmpeg -version
   ```
-- [ ] Confirm tests pass (after ffmpeg install all 18 should run, not just 13):
+- [-] Confirm tests pass (after ffmpeg install all 18 should run, not just 13):
   ```powershell
   cd "c:\Users\Kartik\Documents\Kartik\EDU\Projects\Solution Challenge"
   pip install -r backend/requirements.txt
   python -m pytest tests/ -v
   ```
-  Expect: `18 passed`, zero skipped, zero failed.
+  Expect: `18 passed`, zero skipped, zero failed.  --- 19 passed in 6.91s
 
 ---
 
@@ -34,6 +34,8 @@ If you pick Aegis, no code changes needed — you're done.
 
 If you pick Pramāṇ, tell me and I'll run a consistent rename across code, README, i18n strings, deck, demo script, and submission checklist in one pass. **Do NOT ship with both names visible** — judges will read it as confusion.
 
+___ Keep Aegis
+
 ---
 
 ## 2. Source the sports-media corpus (60–90 minutes)
@@ -42,22 +44,22 @@ The benchmark, the demo, and the case-study scenario all need real video files. 
 
 ### 2a. 30 "clean original" clips (for the benchmark + demo publishing step)
 
-Goal: 30 `.mp4` files, each 10–60 seconds, of sports footage under a **CC-0 / CC-BY / public-domain / team-generated** license. No copyrighted league footage.
+**Automated** via `scripts/download_corpus.py` — pulls 30 sport clips from the **HMDB-51** dataset (CC-BY-4.0, Serre Lab, Brown University) via the `divm/hmdb51` HuggingFace mirror. No manual YouTube-CC browsing.
 
-Where to source:
-- **YouTube** → Filters → Features → Creative Commons. Search: `cricket highlights`, `kabaddi highlights`, `hockey`, `football`. Download via `yt-dlp` (not the browser). Keep the video URL + license note.
-- **Pro Kabaddi League** has released some highlight packages under permissive terms — check their official blog/YouTube.
-- **MIT-licensed sports datasets** on Kaggle / HuggingFace (search: "sports video dataset").
-- **Generate with Veo 3** if you have access — unambiguous ownership. Use Veo to generate ~5 "fictional regional league" clips; adds authenticity to the "Test-League 2026" framing in the demo.
-
-For each clip, record in `data/originals/LICENSES.md`:
-```
-- match-01.mp4 — CC-BY-4.0 — youtube.com/watch?v=XXX — attributed to <creator>
-- match-02.mp4 — CC-0 — kaggle.com/datasets/XXX
-- ...
+```powershell
+python scripts/download_corpus.py
+# → 30 mp4s under data/originals/match-NN.mp4 (4.3 MB total)
+# → data/originals/LICENSES.md with CC-BY-4.0 attribution + residual-copyright clause
 ```
 
-Put the files in `data/originals/`. Git-ignored by default — do not `git add` copyrighted or uncertain-license content.
+Rerun is idempotent (skips already-downloaded files).
+
+**What the corpus is for (read before relying on it):**
+- Benchmark only. The clips exercise `backend/detect.py` + `benchmark/run.py` to measure recall / match-rate / precision under adversarial transforms. They never reach any public output.
+- **Not redistributed.** `.gitignore` excludes `data/originals/*.mp4` — they don't ship in the public GitHub repo.
+- **Not shown in the 2:45 demo video.** HMDB-51 was compiled from mixed sources (some YouTube UGC, some broadcast, some DVD) and individual clips may retain residual copyright beyond the dataset-level CC-BY-4.0. On-screen demo content comes from team-generated Veo 3 footage + the Test-Subject Meera constructed clip (§2b). See `data/originals/LICENSES.md` for the full residual-copyright treatment.
+
+**If your reviewer needs a CC-0-clean benchmark corpus** (e.g., rights-holder partnership demo), swap HMDB-51 for Pexels API downloads in the script. The rest of the pipeline is indifferent to the source.
 
 ### 2b. Constructed Test-Subject Meera persona (30–60 minutes)
 
