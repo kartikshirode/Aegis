@@ -76,8 +76,14 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
 
     with httpx.Client(timeout=120.0) as client:
+        # Always capture the source-stem -> clip_id map even if we skip ingest:
+        # when --ingest-first is off, the originals must already be in the API,
+        # but we still need the mapping to score retrieval correctness.
+        source_to_clip: dict[str, str] = {}
         if args.ingest_first:
-            _ingest_originals(client, args.api_base, args.originals)
+            source_to_clip = _ingest_originals(client, args.api_base, args.originals)
+        else:
+            source_to_clip = _probe_originals(args.originals)
 
         manifest_path = args.variants / "manifest.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -87,13 +93,14 @@ def main() -> None:
 
         for record in manifest:
             variant_path = Path(record["path"])
-            expected = Path(record["source"]).stem
+            expected_stem = Path(record["source"]).stem
+            expected_clip_id = source_to_clip.get(expected_stem)
             chain = record["transform_chain"]
 
-            r = _detect(client, args.api_base, variant_path, expected)
+            r = _detect(client, args.api_base, variant_path, expected_stem)
             per_variant.append(r)
 
-            _update_summary(summary, r, chain, expected)
+            _update_summary(summary, r, chain, expected_clip_id)
 
         # Fair-use false-positive set.
         if args.fair_use and args.fair_use.exists():
@@ -108,10 +115,12 @@ def main() -> None:
         print(json.dumps(_summary_to_dict(summary), indent=2))
 
 
-def _ingest_originals(client: httpx.Client, api_base: str, originals: Path) -> None:
+def _ingest_originals(client: httpx.Client, api_base: str, originals: Path) -> dict[str, str]:
+    """POST each original and capture the returned clip_id. Returns stem -> clip_id."""
+    stem_to_clip: dict[str, str] = {}
     for p in sorted(originals.glob("*.mp4")):
         with p.open("rb") as f:
-            client.post(
+            resp = client.post(
                 f"{api_base}/ingest",
                 data={
                     "title":                  p.stem,
@@ -126,7 +135,20 @@ def _ingest_originals(client: httpx.Client, api_base: str, originals: Path) -> N
                     "athletes_csv":           "",
                 },
                 files={"video": (p.name, f, "video/mp4")},
-            ).raise_for_status()
+            )
+        resp.raise_for_status()
+        stem_to_clip[p.stem] = resp.json()["clip_id"]
+    # Persist for --ingest-first=false runs on the same corpus.
+    (originals / ".benchmark_clip_map.json").write_text(json.dumps(stem_to_clip))
+    return stem_to_clip
+
+
+def _probe_originals(originals: Path) -> dict[str, str]:
+    """Read the stem -> clip_id map persisted by a prior --ingest-first run."""
+    mapping = originals / ".benchmark_clip_map.json"
+    if not mapping.exists():
+        return {}
+    return json.loads(mapping.read_text())
 
 
 def _detect(client: httpx.Client, api_base: str, video: Path, expected_clip: str) -> VariantResult:
@@ -186,23 +208,34 @@ def _detect(client: httpx.Client, api_base: str, video: Path, expected_clip: str
     )
 
 
-def _update_summary(summary: Summary, r: VariantResult, chain: list[str], expected_clip: str) -> None:
+def _update_summary(
+    summary: Summary,
+    r: VariantResult,
+    chain: list[str],
+    expected_clip_id: str | None,
+) -> None:
+    """Update summary with ACTUAL correctness.
+
+    Correctness = retrieved clip_id is exactly the expected source clip's id.
+    If the stem -> clip_id map is missing (no ingest step ran and no prior
+    map is persisted), correctness is marked unknown and excluded from the
+    "correctly_matched" count — the match-rate number is still reported
+    separately as a looser signal.
+    """
     summary.total += 1
     summary.latencies_ms.append(r.latency_ms)
     key = "+".join(chain) if chain else "unknown"
-    bucket = summary.per_transform.setdefault(key, {"total": 0, "matched": 0, "correct": 0})
+    bucket = summary.per_transform.setdefault(
+        key, {"total": 0, "matched": 0, "correct": 0}
+    )
     bucket["total"] += 1
 
     if r.matched:
         summary.matched += 1
         bucket["matched"] += 1
-        # "correct" means the retrieved clip id corresponds to the expected source clip.
-        # We compare by stem substring — the clip_id on ingest is a uuid, so the test
-        # should record a mapping at ingest time. For the LOCAL-mode happy path we
-        # simply check that something matched; the real correctness signal comes
-        # from the integration test, not the benchmark.
-        bucket["correct"] += 1
-        summary.correctly_matched += 1
+        if expected_clip_id and r.detected_clip_id == expected_clip_id:
+            bucket["correct"] += 1
+            summary.correctly_matched += 1
 
 
 def _summary_to_dict(summary: Summary) -> dict:
@@ -213,7 +246,11 @@ def _summary_to_dict(summary: Summary) -> dict:
         "total":                summary.total,
         "matched":              summary.matched,
         "correctly_matched":    summary.correctly_matched,
-        "recall_overall":       (summary.correctly_matched / summary.total) if summary.total else 0.0,
+        # Match rate: fraction of variants where detection escalated to a verdict.
+        "match_rate":           (summary.matched / summary.total) if summary.total else 0.0,
+        # Recall: fraction of variants where the retrieved clip_id is exactly the
+        # expected source clip. This is the number docs/benchmarks.md should cite.
+        "recall":               (summary.correctly_matched / summary.total) if summary.total else 0.0,
         "per_transform":        summary.per_transform,
         "latency_ms_p50":       p50,
         "latency_ms_p95":       p95,

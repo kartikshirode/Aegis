@@ -20,6 +20,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Callable
 
 import imagehash
 from PIL import Image
@@ -56,6 +57,32 @@ class Stage1Match:
             self.phash_distance <= PHASH_ESCALATE_DISTANCE
             or self.embedding_cosine >= EMBEDDING_ESCALATE_COSINE
         )
+
+
+# Combined score weights — embedding dominates because the pillar that
+# differentiates Aegis is semantic recall under adversarial transforms. pHash
+# is secondary and only breaks ties. Signs: higher is better.
+EMBEDDING_WEIGHT = 0.7
+PHASH_WEIGHT = 0.3
+
+
+def _score(m: Stage1Match) -> float:
+    """Sort key for best match — returns negative so min() picks the highest."""
+    phash_signal = 1.0 - (m.phash_distance / 64.0)
+    combined = EMBEDDING_WEIGHT * m.embedding_cosine + PHASH_WEIGHT * phash_signal
+    return -combined
+
+
+def _should_include_original(candidate: Candidate) -> bool:
+    """Heuristic for when Gemini benefits from seeing both clips side-by-side.
+
+    Default: include the original only if the hash signal is ambiguous (neither
+    dominant) — that's where pairwise disambiguation matters most.
+    """
+    hm = candidate.hash_match
+    strong_phash = hm.phash_distance <= 6
+    strong_embedding = hm.embedding_cosine >= 0.9
+    return not (strong_phash or strong_embedding)
 
 
 def fingerprint_candidate(video_path: Path, workdir: Path) -> tuple[list[str], list[list[float]]]:
@@ -106,9 +133,16 @@ def stage2_verdict(
     original: Clip,
     candidate: Candidate,
     candidate_video_path: Path,
-    original_video_path: Path,
+    original_video_path: Path | None,
 ) -> VerdictRecord:
-    """Call Gemini 2.5 Pro with prompts/verdict.txt and parse JSON."""
+    """Call Gemini 2.5 Pro with prompts/verdict.txt and parse JSON.
+
+    `original_video_path` may be None when the ORIGINAL video bytes are not
+    locally available (e.g. Firestore-persisted Clip whose registry entry did
+    not survive process restart). In that case Gemini receives the CANDIDATE
+    clip plus the ORIGINAL metadata only. This is a deliberate downgrade: the
+    candidate-only verdict still labels the match, but the evidence is weaker.
+    """
     system_prompt = (PROMPTS_DIR / "verdict.txt").read_text(encoding="utf-8")
 
     user_payload = {
@@ -132,10 +166,19 @@ def stage2_verdict(
         },
     }
 
+    # Pass only the candidate by default — the original is already pinned by its
+    # Clip metadata + C2PA manifest and re-sending it doubles bytes and cost
+    # for most verdicts (audit finding #14). For DEEPFAKE/EDITED_HIGHLIGHT
+    # disambiguation, the caller can supply both. Phase-2 improvement: decide
+    # dynamically from Stage-1 signals.
+    video_refs = [candidate_video_path]
+    if original_video_path is not None and _should_include_original(candidate):
+        video_refs.insert(0, original_video_path)
+
     raw = _call_gemini(
         system_prompt=system_prompt,
         user_payload=user_payload,
-        video_refs=[original_video_path, candidate_video_path],
+        video_refs=video_refs,
     )
     data = _strict_json(raw)
 
@@ -190,17 +233,23 @@ def _mock_verdict(payload: dict) -> str:
     Decision rules — keep simple, match the benchmark happy path:
       - phash_distance <= 6  OR embedding_cosine >= 0.92 -> EXACT_PIRACY @ 0.90
       - embedding_cosine >= 0.85                          -> EXACT_PIRACY @ 0.78
-      - "deepfake" or "fake" in caption                   -> DEEPFAKE_MANIPULATION @ 0.80
+      - caption keyword match (ONLY if AEGIS_DEMO_MODE=true) -> DEEPFAKE_MANIPULATION
       - otherwise                                         -> FALSE_POSITIVE @ 0.55
+
+    The caption-keyword rule is a demo convenience: real Gemini inspects the
+    pixels and doesn't classify on the caption alone. We gate it behind
+    AEGIS_DEMO_MODE so that automated benchmarks and tests don't accidentally
+    pass through a caption that makes every candidate look synthetic.
     """
     cand = payload["CANDIDATE"]
     caption = (cand.get("caption") or "").lower()
     hm = cand["hash_match"]
+    demo_mode = os.environ.get("AEGIS_DEMO_MODE", "").lower() in ("1", "true", "yes")
 
-    if any(word in caption for word in ("deepfake", "morph", "ai-generated")):
+    if demo_mode and any(word in caption for word in ("deepfake", "morph", "ai-generated")):
         data = {
             "verdict": "DEEPFAKE_MANIPULATION", "confidence": 0.80,
-            "evidence": ["caption_assertion: caption asserts synthetic origin"],
+            "evidence": ["caption_assertion: caption asserts synthetic origin (DEMO MODE)"],
             "recommended_action": "ATHLETE_ALERT_AND_TAKEDOWN",
             "athlete_alert": {"should_alert": True, "reason": "Synthetic media claim in caption"},
         }
@@ -237,12 +286,14 @@ def detect(
     uploader: str,
     caption: str,
     workdir: Path,
-    resolve_clip: callable,            # (clip_id) -> Clip
-    resolve_video: callable,           # (clip_id) -> Path
-) -> VerdictRecord | None:
+    resolve_clip: Callable[[str], "Clip | None"],
+    resolve_video: Callable[[str], "Path | None"],
+) -> tuple[VerdictRecord, Candidate] | None:
     """End-to-end: fingerprint the candidate, retrieve, and verdict.
 
-    Returns None when Stage 1 produces no escalation-worthy match.
+    Returns (VerdictRecord, Candidate) on a successful escalated match, or None
+    when Stage 1 produces no escalation-worthy match. The caller is responsible
+    for persisting the Candidate — /takedown looks it up by id later.
     """
     phashes, embeddings = fingerprint_candidate(candidate_video_path, workdir)
     matches = stage1_retrieve(phashes, embeddings)
@@ -250,9 +301,11 @@ def detect(
     if not escalated:
         return None
 
-    best = min(escalated, key=lambda m: (m.phash_distance, -m.embedding_cosine))
+    best = min(escalated, key=_score)
     original = resolve_clip(best.clip_id)
     original_video = resolve_video(best.clip_id)
+    if original is None:
+        return None
 
     candidate = Candidate(
         candidate_id=_candidate_id_from(candidate_url, candidate_video_path),
@@ -269,7 +322,8 @@ def detect(
         ),
     )
 
-    return stage2_verdict(original, candidate, candidate_video_path, original_video)
+    verdict = stage2_verdict(original, candidate, candidate_video_path, original_video)
+    return verdict, candidate
 
 
 def _candidate_id_from(url: str, video_path: Path) -> str:

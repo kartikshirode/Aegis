@@ -66,9 +66,15 @@ class AegisStore:
         with self._lock:
             self._clip_videos[clip_id] = path
 
-    def get_clip_video(self, clip_id: str) -> Path:
+    def get_clip_video(self, clip_id: str) -> Path | None:
+        """Return the on-disk path of the original video for a clip, or None.
+
+        In-memory video registry is process-local; Firestore does not persist
+        it. Callers (notably backend.detect) must tolerate None and skip the
+        Stage-2 Gemini pair-verdict when the original bytes are unavailable.
+        """
         with self._lock:
-            return self._clip_videos[clip_id]
+            return self._clip_videos.get(clip_id)
 
     # ---- Candidates
     def put_candidate(self, candidate: Candidate) -> None:

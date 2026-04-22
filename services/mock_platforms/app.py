@@ -66,7 +66,13 @@ def takedown(notice: NoticeIn) -> NoticeOut:
     }.get(PLATFORM, 72 * 3600)
 
     # IT Rules 2021 + MeitY Nov 2023: 24h for synthetic / morphed content.
-    if notice.jurisdiction == "IN" and "synthetic" in notice.body.lower() or "morphed" in notice.body.lower() or "Rule 3(2)(b)" in notice.body:
+    body_lower = notice.body.lower()
+    is_synthetic_signal = (
+        "synthetic" in body_lower
+        or "morphed" in body_lower
+        or "Rule 3(2)(b)" in notice.body
+    )
+    if notice.jurisdiction == "IN" and is_synthetic_signal:
         sla_seconds = 24 * 3600
 
     ticket_id = _deterministic_ticket(PLATFORM, notice.notice_id)

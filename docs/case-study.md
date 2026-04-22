@@ -33,7 +33,7 @@ We reference this incident as *prior reporting*. We do not rehost, regenerate, o
 
 - **Content:** ~20-second video of "Test-Subject Meera" appearing to admit to receiving a match-fix payment.
 - **Production:** generated offline on a developer machine using DFDC-adjacent open tooling. Not generated via any Google or commercial API. Not hosted or transmitted via the product pipeline.
-- **Labelling:** the generated clip embeds a visible watermark `CONSTRUCTED TEST SCENARIO · NOT REAL` that Aegis's pipeline is configured to recognize and strip only for the purposes of the demo (so judges see a clean clip in the dashboard). The raw clip shown outside the dashboard always shows the watermark.
+- **Labelling:** the generated clip embeds a visible watermark `CONSTRUCTED TEST SCENARIO · NOT REAL`. The watermark is **never** removed — not in the dashboard, not in the propagation-graph thumbnail, not in the takedown-notice preview. Every surface that shows the manipulated clip shows the watermark. This is deliberate: the product cannot strip a safety watermark on its own content without undermining the ethics claim it rests on.
 - **Distribution:** seeded only on a controlled test domain we operate (e.g., `aegis-test-domain.example`). Never uploaded to any real platform. After Phase 3, the clip file is destroyed and the SHA-256 of the destroyed artifact is logged in `data/case-study/destruction-log.md`.
 
 ## The demo storyline (sequenced for 90 seconds)

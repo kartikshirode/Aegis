@@ -64,6 +64,15 @@ def load_seeds(path: Path) -> list[Seed]:
 
 
 class RobotsCache:
+    """Per-host robots.txt fetcher + cache.
+
+    Policy (RFC 9309 §2.3): if robots.txt is absent or unreachable, the crawler
+    MAY proceed — treat as allow-all. We follow that spec-compliant default so a
+    single transient fetch failure does not silently block the host for the
+    crawler's lifetime. An explicit 5xx response, however, is treated as deny
+    per RFC 9309 §2.3.1.3 (server error -> back off).
+    """
+
     def __init__(self) -> None:
         self._parsers: dict[str, urllib.robotparser.RobotFileParser] = {}
 
@@ -73,20 +82,38 @@ class RobotsCache:
             return False
         base = f"{parts.scheme}://{parts.netloc}"
         if base not in self._parsers:
-            rp = urllib.robotparser.RobotFileParser()
-            rp.set_url(f"{base}/robots.txt")
-            try:
-                rp.read()
-            except Exception:
-                # If robots.txt is unreachable we default to conservative (not allowed).
-                rp = _disallow_all_parser()
-            self._parsers[base] = rp
+            self._parsers[base] = _fetch_parser(base)
         return self._parsers[base].can_fetch(USER_AGENT, url)
+
+
+def _fetch_parser(base: str) -> urllib.robotparser.RobotFileParser:
+    rp = urllib.robotparser.RobotFileParser()
+    try:
+        resp = httpx.get(f"{base}/robots.txt", timeout=5.0,
+                         headers={"User-Agent": USER_AGENT}, follow_redirects=True)
+    except httpx.HTTPError:
+        # Network failure -> allow-all per RFC 9309 §2.3 "If the server does not respond...".
+        return _allow_all_parser()
+
+    if resp.status_code in range(500, 600):
+        return _disallow_all_parser()
+    if resp.status_code in (401, 403):
+        return _disallow_all_parser()
+    if resp.status_code == 404 or resp.status_code >= 400:
+        return _allow_all_parser()
+    rp.parse(resp.text.splitlines())
+    return rp
 
 
 def _disallow_all_parser() -> urllib.robotparser.RobotFileParser:
     rp = urllib.robotparser.RobotFileParser()
     rp.parse(["User-agent: *", "Disallow: /"])
+    return rp
+
+
+def _allow_all_parser() -> urllib.robotparser.RobotFileParser:
+    rp = urllib.robotparser.RobotFileParser()
+    rp.parse(["User-agent: *", "Allow: /"])
     return rp
 
 

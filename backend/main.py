@@ -16,8 +16,10 @@ Production wiring (GCP creds, Firestore client, Vector Search index) reads from 
 
 from __future__ import annotations
 
+import asyncio
 import os
 import tempfile
+import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
@@ -61,6 +63,30 @@ def healthz() -> dict:
     return {"ok": True, "index_mode": os.environ.get("AEGIS_INDEX_MODE", "LOCAL")}
 
 
+@app.get("/demo/status")
+def demo_status() -> dict:
+    """Which backends is this process actually talking to? Use to confirm the
+    API is in GCP mode (not LOCAL) before recording the demo video."""
+    def present(key: str) -> bool:
+        return bool(os.environ.get(key))
+
+    return {
+        "index_mode":     os.environ.get("AEGIS_INDEX_MODE", "LOCAL"),
+        "storage_mode":   os.environ.get("AEGIS_STORAGE_MODE", "LOCAL"),
+        "kms_mode":       os.environ.get("AEGIS_KMS_MODE", "LOCAL"),
+        "anchor_mode":    os.environ.get("AEGIS_ANCHOR_MODE", "EAGER"),
+        "demo_mode":      os.environ.get("AEGIS_DEMO_MODE", "").lower() in ("1", "true", "yes"),
+        "gemini_live":    present("GOOGLE_API_KEY") or present("VERTEX_AI_PROJECT"),
+        "vector_search_configured": present("VERTEX_VECTOR_INDEX_ID"),
+        "mock_endpoints": {
+            "x":        present("MOCK_X_ENDPOINT"),
+            "youtube":  present("MOCK_YOUTUBE_ENDPOINT"),
+            "meta":     present("MOCK_META_ENDPOINT"),
+            "telegram": present("MOCK_TELEGRAM_ENDPOINT"),
+        },
+    }
+
+
 # ---------- /ingest ----------
 
 class IngestResponse(BaseModel):
@@ -97,16 +123,13 @@ async def ingest_route(
     )
     athletes = [a.strip() for a in athletes_csv.split(",") if a.strip()]
 
-    clip: Clip = ingest_mod.ingest(
+    clip, embeddings = ingest_mod.ingest(
         video_path,
         title=title, sport=sport, event=event,
         rights_holder=rights_holder, rights_holder_contact=contact,
         athletes=athletes, workdir=WORKDIR,
     )
 
-    # index embeddings
-    frames = ingest_mod.extract_keyframes(video_path, WORKDIR / clip.clip_id / "frames")
-    embeddings = ingest_mod.compute_embeddings(frames)
     vector_index.upsert_clip(clip.clip_id, embeddings, clip.phash_per_frame)
 
     store.put_clip(clip)
@@ -140,7 +163,7 @@ async def detect_route(
     video_path = WORKDIR / f"candidate_{uuid4().hex}_{video.filename}"
     video_path.write_bytes(await video.read())
 
-    verdict = detect_mod.detect(
+    result = detect_mod.detect(
         candidate_url=candidate_url,
         candidate_video_path=video_path,
         platform=platform,
@@ -151,9 +174,13 @@ async def detect_route(
         resolve_clip=store.get_clip,
         resolve_video=store.get_clip_video,
     )
-    if verdict is None:
+    if result is None:
         return {"matched": False}
 
+    verdict, candidate = result
+    # Persist the Candidate first — /takedown looks it up by id. Without this,
+    # the takedown path 404s. (Audit v2 ship-blocker.)
+    store.put_candidate(candidate)
     store.put_verdict(verdict)
     _anchor_leaf(merkle_mod.build_leaf_for_verdict(verdict.detection_id, verdict.model_dump(mode="json")))
     return {"matched": True, "verdict": verdict.model_dump()}
@@ -235,12 +262,18 @@ def anchor_route() -> dict:
 
 
 # ---------- Merkle batch buffer ----------
+#
+# Under FastAPI's thread-pool for sync handlers, appends + drains can race. A
+# plain threading.Lock is sufficient — we do not touch _PENDING from async
+# coroutines. If _anchor_leaf ever becomes awaitable, swap in an asyncio.Lock.
 
 _PENDING: list[merkle_mod.Leaf] = []
+_PENDING_LOCK = threading.Lock()
 
 
 def _anchor_leaf(leaf: merkle_mod.Leaf) -> None:
-    _PENDING.append(leaf)
+    with _PENDING_LOCK:
+        _PENDING.append(leaf)
     # Phase-1 demo reality: we flush after every leaf so /verify returns a receipt
     # immediately. In production, swap for a scheduled daily flush + a /verify that
     # tolerates unanchored detections with a clearly-marked "pending anchor" state.
@@ -249,12 +282,14 @@ def _anchor_leaf(leaf: merkle_mod.Leaf) -> None:
 
 
 def _flush_pending_leaves() -> dict:
-    if not _PENDING:
-        return {"flushed": 0}
-    batch = list(_PENDING)
-    _PENDING.clear()
+    with _PENDING_LOCK:
+        if not _PENDING:
+            return {"flushed": 0}
+        batch = list(_PENDING)
+        _PENDING.clear()
+    # Outside the lock: anchor + persist. Losing the lock early lets concurrent
+    # ingest/detect handlers queue new leaves while we sign the batch.
     receipt_dict = merkle_mod.anchor_batch(batch)
     receipt = MerkleReceipt(**receipt_dict)
-    # Associate every leaf id with this receipt for O(1) /verify lookup.
     store.put_merkle_receipt(receipt, detection_ids=[l.id for l in batch])
     return {"flushed": len(batch), "receipt": receipt.model_dump()}

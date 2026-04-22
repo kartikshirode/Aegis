@@ -106,7 +106,7 @@ Show `backend/prompts/verdict.txt` first 25 lines as a graphic (monospace, synta
 > **"Measurable, not claimed."**
 
 Published Phase-1 targets from `docs/benchmarks.md`:
-- Recall on single adversarial transforms at ≤ 5% FPR: **≥ 85%**
+- Recall (retrieved clip_id = expected source) on single adversarial transforms: **≥ 0.80** (fixed thresholds; threshold sweep is Phase 2)
 - Precision@5 on Vector Search retrieval: **≥ 0.80**
 - End-to-end latency (detect → verdict → DMCA draft): **< 90 s p95**
 - Deepfake detection accuracy (zero-shot Gemini, 30-clip set): **≥ 0.80**

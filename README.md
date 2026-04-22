@@ -11,9 +11,9 @@ Built for the **Google Solution Challenge 2026 — Build with AI** under PS#1 ("
 ## The 30-second version
 
 1. A rights-holder publishes an official clip. Aegis signs it with a **C2PA** content credential (Cloud KMS-backed) and fingerprints it two ways — perceptual hash plus Vertex AI multimodal embedding indexed in Vertex AI Vector Search.
-2. Aegis's crawler discovers unauthorized re-uploads in the wild. A two-stage detector — fast retrieval, then **Gemini 2.5 Pro** semantic verdict — classifies each match across six labels including `EXACT_PIRACY` and `DEEPFAKE_MANIPULATION`.
-3. A **deepfake / likeness-abuse** verdict triggers a bilingual **English + Hindi** alert on the athlete-facing view (the default, unauthenticated landing page of this app).
-4. An **agentic takedown pipeline** drafts platform-specific notices — **DMCA §512(c)** for US-hosted content, **IT Rules 2021 + MeitY Nov 2023 advisory** for India-hosted content — files them, and tracks outcomes.
+2. Aegis's crawler discovers unauthorized re-uploads in the wild. A two-stage detector — fast retrieval, then **Gemini 2.5 Pro** semantic verdict against a version-controlled 6-label prompt — classifies each match. One of those labels is `DEEPFAKE_MANIPULATION`.
+3. When the verdict is `DEEPFAKE_MANIPULATION` (or the athlete-likeness evidence in the verdict is strong), a bilingual **English + Hindi** alert lands on the athlete-facing view, which is the default unauthenticated landing page. **Phase 1 uses Gemini zero-shot multimodal classification as the deepfake signal; a fine-tuned classifier head is Phase-2 work.** The pipeline and the UX are fully wired; the classifier quality is what the benchmark measures and reports honestly.
+4. An **agentic takedown pipeline** drafts platform-specific notices — **DMCA §512(c)** for US-hosted content, **IT Rules 2021 + MeitY Nov 2023 advisory** for India-hosted content — files them to per-platform endpoints, and tracks outcomes.
 5. Every claim and every takedown is hashed into a daily **Merkle root** signed via Cloud KMS. Anyone can verify a receipt at `/verify/{detection_id}`.
 
 ## Why this is not DRM
@@ -54,7 +54,8 @@ Full alignment + what is deliberately *not* claimed: [docs/sdg-alignment.md](doc
 │   ├── src/pages/VerifyPage.tsx   — public Merkle-receipt lookup
 │   └── src/i18n.ts                — English + Hindi strings
 ├── benchmark/
-│   └── generate_variants.py       — seeded adversarial variant generator
+│   ├── generate_variants.py       — seeded adversarial variant generator
+│   └── run.py                     — benchmark driver; writes summary.json + per-variant.jsonl
 ├── data/
 │   ├── originals/                 — CC-licensed source clips
 │   ├── adversarial/               — generated variants
@@ -104,20 +105,21 @@ Enable on the GCP project:
 
 Set (via Cloud Run revision env or local shell):
 
-```
-VERTEX_AI_PROJECT=<project-id>
-VERTEX_AI_LOCATION=us-central1
-VERTEX_VECTOR_INDEX_ID=<index-id>
-VERTEX_VECTOR_ENDPOINT_ID=<endpoint-id>
-VERTEX_VECTOR_DEPLOYED_INDEX_ID=<deployed-id>
-AEGIS_INDEX_MODE=GCP
-AEGIS_STORAGE_MODE=GCP
-MOCK_X_ENDPOINT=https://mock-x-...run.app/takedown
-MOCK_YOUTUBE_ENDPOINT=https://mock-yt-...run.app/takedown
-MOCK_META_ENDPOINT=https://mock-meta-...run.app/takedown
-MOCK_TELEGRAM_ENDPOINT=https://mock-tg-...run.app/takedown
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/sa.json  # or use Cloud Run's default SA
-```
+| Env var | Purpose |
+|---|---|
+| `VERTEX_AI_PROJECT` | GCP project ID for Vertex AI (Gemini + embeddings + Vector Search). Must be set for real benchmark numbers. |
+| `VERTEX_AI_LOCATION` | Vertex region, e.g. `us-central1`. |
+| `VERTEX_VECTOR_INDEX_ID` / `VERTEX_VECTOR_ENDPOINT_ID` / `VERTEX_VECTOR_DEPLOYED_INDEX_ID` | The three Vector Search IDs. Create in the Vertex AI console. |
+| `AEGIS_INDEX_MODE` | `LOCAL` (in-memory FAISS-style) or `GCP` (Vertex Vector Search). Default `LOCAL`. |
+| `AEGIS_STORAGE_MODE` | `LOCAL` (in-memory) or `GCP` (Firestore). Default `LOCAL`. |
+| `AEGIS_KMS_MODE` | `LOCAL` (HMAC dev key) or `GCP` (Cloud KMS asymmetric sign). Default `LOCAL`. |
+| `AEGIS_KMS_KEY` | Fully qualified Cloud KMS key-version resource name. Required when `AEGIS_KMS_MODE=GCP`. |
+| `AEGIS_ANCHOR_MODE` | `EAGER` (flush Merkle root after every leaf) or `DAILY` (scheduled flush). Default `EAGER`. |
+| `AEGIS_DEMO_MODE` | `true` enables the demo-only caption-keyword rule in `_mock_verdict` that classifies captions containing "deepfake" / "morph" / "ai-generated" as `DEEPFAKE_MANIPULATION`. **Off by default.** Never set in CI or benchmarks. Use only when recording the scripted demo flow against mock Gemini. |
+| `AEGIS_WORKDIR` | Temp directory root for uploaded/extracted frames. Defaults to OS temp. |
+| `MOCK_{X,YOUTUBE,META,TELEGRAM}_ENDPOINT` | Full URL (including `/takedown`) of the per-platform Cloud Run honeypot. |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Path to service-account JSON, or use Cloud Run's default SA. |
+| `ALLOWED_ORIGINS` | Comma-separated CORS origins for the API. Defaults to `*`. |
 
 Build + deploy (example, one-shot):
 
@@ -141,7 +143,7 @@ Core provenance + athlete view + detection pipeline are licensed under **Apache-
 
 Headline Phase-1 targets — full table and protocol in [docs/benchmarks.md](docs/benchmarks.md):
 
-- Recall on single adversarial transforms at ≤ 5% FPR: **≥ 85%**
+- Recall (retrieved `clip_id` = expected source) on single adversarial transforms: **≥ 0.80** (Phase 1 · fixed thresholds; sweep is Phase 2)
 - Precision@5 on Vector Search retrieval: **≥ 0.80**
 - End-to-end latency (detection → verdict → DMCA draft): **< 90 s p95**
 - Deepfake detection accuracy (zero-shot Gemini on 30-clip set): **≥ 0.80**

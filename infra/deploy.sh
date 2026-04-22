@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
-# Aegis — one-shot GCP deploy script.
+# Aegis — mostly one-shot GCP deploy script.
+#
+# NOTE: Vertex AI Vector Search index creation is NOT automated here. Creating
+# a ScaNN index + deploying it to an index endpoint is a multi-minute operation
+# with a UI that is significantly more ergonomic than the CLI in 2026. Do it
+# once in the console, then export VERTEX_VECTOR_INDEX_ID / _ENDPOINT_ID /
+# _DEPLOYED_INDEX_ID before running this script. Without those, the API still
+# boots but /detect returns matched=false.
 #
 # What it does:
 #   1. Enables required APIs on the target project.
-#   2. Creates a Vertex AI Vector Search index + endpoint (if missing).
-#   3. Creates a Cloud KMS keyring + asymmetric sign key (if missing).
-#   4. Builds + deploys the four mock platform services (x, youtube, meta, telegram).
-#   5. Builds + deploys the Aegis API, wired to the mocks via env.
-#   6. Deploys the crawler as a Cloud Run Job.
+#   2. Creates a Cloud KMS keyring + asymmetric sign key (if missing).
+#   3. Builds + deploys the four mock platform services (x, youtube, meta, telegram).
+#   4. Builds + deploys the Aegis API, wired to the mocks via env.
+#   5. Deploys the crawler as a Cloud Run Job (built from source).
 #
 # What it does not do:
 #   - Provision Firebase Auth / Hosting (do that from the Firebase console; the app's
@@ -115,25 +121,30 @@ if [[ -n "${VERTEX_VECTOR_INDEX_ID:-}" ]]; then
 fi
 
 echo "==> Deploying aegis-api"
+
+# Use a custom delimiter so env-var values can safely contain "," (e.g. URLs
+# with query params). Format: ^|^KEY1=val1|KEY2=val2  (gcloud convention).
+ENV_VARS_JOINED="$(IFS='|'; echo "${ENV_VARS[*]}")"
 gcloud run deploy aegis-api \
   --source . \
   --region "$REGION" \
   --allow-unauthenticated \
   --min-instances=1 \
   --cpu=1 --memory=1Gi \
-  --set-env-vars "$(IFS=,; echo "${ENV_VARS[*]}")" \
+  --set-env-vars "^|^${ENV_VARS_JOINED}" \
   --quiet
 
 API_URL=$(gcloud run services describe aegis-api --region "$REGION" --format='value(status.url)')
 echo "  API: $API_URL"
 
-# 6) Crawler — as a Cloud Run Job so we can run on-demand for the demo
+# 6) Crawler — deploy as Cloud Run Job directly from source so there's no
+#    "image not found" step (audit finding #42). gcloud builds the container.
 echo "==> Deploying crawler job"
 gcloud run jobs deploy aegis-crawler \
-  --image "gcr.io/${PROJECT_ID}/aegis-crawler:latest" \
+  --source "./services/crawler" \
   --region "$REGION" \
   --set-env-vars "AEGIS_API_BASE=${API_URL}" \
-  --quiet || echo "  (crawler image not yet built; build+push then re-run)"
+  --quiet
 
 # 7) Print a summary + copy-paste env for the frontend
 cat <<EOF

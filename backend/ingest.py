@@ -14,7 +14,6 @@ Steps 4-6 require live GCP credentials; Phase 1 fallbacks noted inline.
 
 from __future__ import annotations
 
-import hashlib
 import os
 import subprocess
 import tempfile
@@ -78,8 +77,15 @@ def compute_embeddings(frames: list[Path]) -> list[list[float]]:
     """Vertex AI multimodal embeddings per frame.
 
     Phase-1 fallback: when VERTEX_AI_PROJECT is unset, returns a deterministic
-    mock 1408-dim vector derived from the frame bytes so local integration tests
-    run without a live GCP connection. The mock must never be used in submission.
+    mock 1408-dim vector *derived from the frame's perceptual hash* so that
+    visually similar frames produce similar vectors. This keeps the LOCAL
+    integration test and the LOCAL benchmark honest — a re-encode of the same
+    frame yields a pHash close in Hamming distance, which in turn yields a
+    high cosine similarity.
+
+    Numbers produced in LOCAL mode are still NOT substitutes for real
+    Vertex AI embedding numbers in a submission. See docs/benchmarks.md:
+    the real-numbers run requires VERTEX_AI_PROJECT.
     """
     project = os.environ.get("VERTEX_AI_PROJECT")
     if not project:
@@ -98,10 +104,27 @@ def compute_embeddings(frames: list[Path]) -> list[list[float]]:
 
 
 def _mock_embedding(frame: Path, dim: int = 1408) -> list[float]:
-    digest = hashlib.sha256(frame.read_bytes()).digest()
-    # Tile the digest to the desired dimension, centred at zero.
-    raw = (digest * ((dim // len(digest)) + 1))[:dim]
-    return [(b - 128) / 128.0 for b in raw]
+    """Similarity-preserving mock.
+
+    Strategy: compute a 64-bit pHash (phash) and a 64-bit difference-hash (dhash).
+    Concatenate to get 128 bits per frame. Map each bit to ±1, then tile to
+    `dim`. Two frames that differ in k bits produce vectors whose cosine
+    similarity ≈ 1 − 2k/128 — so a re-encode that shifts ~4 bits yields ≈ 0.94,
+    a mirror that shifts ~30 bits yields ≈ 0.53, and an unrelated image that
+    differs in ~64 bits yields ≈ 0. This tracks real pHash behaviour and
+    therefore exercises the Stage-1 escalation path honestly in LOCAL mode.
+    """
+    with Image.open(frame) as img:
+        p_bits = imagehash.phash(img).hash.flatten()
+        d_bits = imagehash.dhash(img).hash.flatten()
+    import numpy as np
+    bits = np.concatenate([p_bits.astype(np.int8), d_bits.astype(np.int8)])  # shape (128,)
+    signed = (bits * 2 - 1).astype(np.float32)                               # {+1, -1}
+    # Tile + clip to `dim`. Normalize so the consumer's cosine is well-defined.
+    reps = (dim + signed.size - 1) // signed.size
+    tiled = np.tile(signed, reps)[:dim]
+    norm = float(np.linalg.norm(tiled)) or 1.0
+    return (tiled / norm).tolist()
 
 
 def sign_c2pa_manifest(
@@ -171,12 +194,18 @@ def ingest(
     rights_holder_contact: RightsHolderContact,
     athletes: list[str],
     workdir: Path,
-) -> Clip:
-    """Full ingest: extract keyframes, fingerprint, embed, sign, return Clip record."""
+) -> tuple[Clip, list[list[float]]]:
+    """Full ingest: extract keyframes, fingerprint, embed, sign.
+
+    Returns (Clip, embeddings). The caller is responsible for upserting the
+    embeddings into the vector index — this function does not touch the index,
+    because production Vector Search upserts are an I/O + cost concern the API
+    layer should own.
+    """
     clip_id = str(uuid.uuid4())
     frames = extract_keyframes(video_path, workdir / clip_id / "frames")
     phashes = compute_phashes(frames)
-    _ = compute_embeddings(frames)  # indexed by caller into Vector Search
+    embeddings = compute_embeddings(frames)
 
     manifest_out = workdir / clip_id / "manifest.c2pa.json"
     sign_c2pa_manifest(
@@ -185,7 +214,7 @@ def ingest(
         athletes=athletes, manifest_out=manifest_out,
     )
 
-    return Clip(
+    clip = Clip(
         clip_id=clip_id,
         title=title,
         sport=sport,
@@ -199,3 +228,4 @@ def ingest(
         phash_per_frame=phashes,
         embedding_index_id=clip_id,
     )
+    return clip, embeddings

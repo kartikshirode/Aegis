@@ -89,7 +89,7 @@ Iterating this prompt is part of the team's Thursday work; the commit history on
 
 See [`docs/benchmarks.md`](benchmarks.md) for the full table. Headline targets:
 
-- **Recall on single adversarial transforms at ≤ 5% FPR:** ≥ 85%
+- **Recall** (retrieved `clip_id` matches expected source) on single adversarial transforms: **≥ 0.80** at fixed Phase-1 thresholds; threshold sweep is Phase 2.
 - **Precision@5 on Vector Search retrieval:** ≥ 0.80
 - **End-to-end latency (detection → verdict → DMCA draft):** < 90 s p95
 - **Deepfake detection accuracy (zero-shot Gemini):** ≥ 0.80 on a 30-clip labelled set

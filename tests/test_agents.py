@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import os
 from datetime import datetime, timezone
 
 import pytest
@@ -45,12 +44,9 @@ def test_unknown_platform_falls_back_to_other_or_us():
     assert j in (Jurisdiction.OTHER, Jurisdiction.US)  # fallback agent is XAgent -> US
 
 
-def test_agent_submit_endpoint_resolves_from_env():
-    os.environ["MOCK_X_ENDPOINT"] = "http://localhost:8101/takedown"
-    try:
-        assert get_agent("x").resolve_submit_endpoint() == "http://localhost:8101/takedown"
-    finally:
-        os.environ.pop("MOCK_X_ENDPOINT", None)
+def test_agent_submit_endpoint_resolves_from_env(monkeypatch):
+    monkeypatch.setenv("MOCK_X_ENDPOINT", "http://localhost:8101/takedown")
+    assert get_agent("x").resolve_submit_endpoint() == "http://localhost:8101/takedown"
 
 
 def test_deepfake_rule_basis_includes_rule_3_2_b():

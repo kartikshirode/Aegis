@@ -4,7 +4,7 @@ Aegis works in a domain where the same techniques that detect abuse can enable i
 
 ## Training-data provenance
 
-- **Deepfake classifier training sets:** **DFDC** (Deepfake Detection Challenge) and **Celeb-DF** only, both public research datasets. Dataset cards from the original papers are reproduced in `docs/dataset-cards/` (Phase 2 — sources cited inline for Phase 1).
+- **Deepfake classifier training sets:** **DFDC** (Deepfake Detection Challenge) and **Celeb-DF** only, both public research datasets. Dataset cards: [`docs/dataset-cards/dfdc.md`](dataset-cards/dfdc.md) and [`docs/dataset-cards/celeb-df.md`](dataset-cards/celeb-df.md).
 - **Sports-media corpus:** only Creative-Commons-licensed or explicitly-permissively-licensed footage. Sources include Pro Kabaddi highlight packages under permissive terms, YouTube CC-filtered cricket clips, and MIT-licensed open sports datasets. For unambiguous ownership, a portion of the demo corpus is AI-generated sports footage produced by the team.
 - **No scraping of copyrighted footage for any purpose** — training, evaluation, demo, or illustration. This is non-negotiable. If we cannot source something under a permissive license, we do not use it.
 - **No private athlete imagery.** We do not train on, index, or demo real athlete likenesses outside the boundary of published public-incident reporting. Any public-incident reference (e.g., the 2023 Rashmika Mandanna deepfake) is *cited*, not rehosted or regenerated.
@@ -26,7 +26,8 @@ The one exception is a single demo artifact: one manipulated clip of a fictional
 
 - The athlete-facing view requires explicit sign-up by the athlete (or an authorized representative).
 - We do not build likeness profiles, reverse-image-search dossiers, or embedding galleries for athletes who have not enrolled.
-- An enrolled athlete can revoke their enrollment at any time; the revoke flow deletes the likeness embedding and disables further alerts.
+- An enrolled athlete can revoke their enrollment at any time; the revoke flow sets `revoked_at` and disables further alerts.
+- **Phase 1 deliberately does not store a likeness embedding for enrolled athletes.** The enrollment record is name + preferred language only. Likeness matching in Phase 1 rides on the Clip's `athletes[]` metadata plus the Gemini verdict's `athlete_alert` reasoning — no separate biometric embedding is created or stored. An optional likeness-embedding flow is Phase-2 work gated on a separate, explicit consent step.
 
 ## Legally defensible crawling
 

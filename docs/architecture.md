@@ -74,7 +74,7 @@ A single diagram, a table of services, and a walk-through of the flagship scenar
 |---|---|---|
 | `backend/` (API) | Cloud Run | FastAPI app: `/ingest` `/detect` `/takedown` `/athlete/enroll` `/verify/{id}` `/provenance/anchor` `/healthz` |
 | `services/crawler/` | Cloud Run Jobs | Public-URL crawler (robots.txt-aware); posts candidates to `/detect` |
-| `services/agents/` | In-process modules (ADK-style upgrade path) | Per-platform takedown logic (X, YouTube, Meta, Telegram) |
+| `services/agents/` | **In-process Python modules (Phase-1 fallback).** Not Google ADK. The `PlatformAgent` interface is the drop-in surface for an ADK migration in Phase 2. | Per-platform takedown logic (X, YouTube, Meta, Telegram) |
 | `services/mock_platforms/` | Cloud Run | 4 honeypot endpoints returning structured takedown receipts |
 | `backend/provenance/` | In-process + daily job | Merkle log + Cloud KMS anchor + `/verify` surface |
 | `frontend/` | Firebase Hosting | React + Vite · EN + HI · Athlete view default, Rights-holder behind auth, public `/verify` |
@@ -168,6 +168,10 @@ flowchart LR
 | Platform submission | mock endpoints via `MOCK_*_ENDPOINT` | same mock endpoints (Cloud Run honeypots) |
 
 The LOCAL → GCP path is flipped via env vars; no code changes. Mock paths are marked `_mock_*` or checked with `if os.environ.get(...)` everywhere so there is no ambiguity about what's real at runtime.
+
+## Multi-agent orchestration — what we shipped vs. what the plan described
+
+The approved plan described a "Google ADK multi-agent takedown pipeline." In Phase 1 we shipped **fallback #2** from the ranked-fallback ladder: a single-process Python agent registry (`services/agents/`) that exposes the same per-platform interface (`PlatformAgent.pick_jurisdiction`, `.host_provider()`, `.designated_agent_email()`, `.rule_basis_for()`, `.resolve_submit_endpoint()`). The interface is the drop-in surface for an ADK migration; the orchestration layer is the only piece that changes. This is honest in the pitch: "per-platform agents, single-process today, ADK in Phase 2."
 
 ## Ranked fallbacks (from the approved plan)
 

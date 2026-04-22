@@ -1,4 +1,5 @@
 import { useTranslation, Trans } from "react-i18next";
+import { Link } from "react-router-dom";
 import { AlertTriangle, ShieldCheck } from "lucide-react";
 
 import BilingualAlert from "@/components/BilingualAlert";
@@ -49,9 +50,12 @@ export default function AthleteView() {
           }
           actions={
             <div className="flex gap-3">
-              <button className="rounded bg-aegis-ink text-white px-3 py-2 text-sm">
+              <Link
+                to={`/verify/${a.id}`}
+                className="rounded bg-aegis-ink text-white px-3 py-2 text-sm"
+              >
                 {t("athlete.seeTakedowns")}
-              </button>
+              </Link>
             </div>
           }
         />

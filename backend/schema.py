@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field
 
 
 class Verdict(str, Enum):
@@ -48,7 +48,8 @@ class Clip(BaseModel):
     rights_holder: str
     rights_holder_contact: RightsHolderContact
     athletes: list[str] = Field(default_factory=list)
-    c2pa_manifest_url: HttpUrl
+    # Accepts file://, https://, or gs:// — manifest lives wherever it can be fetched.
+    c2pa_manifest_url: str
     storage_uri: str
     phash_per_frame: list[str]
     embedding_index_id: str
@@ -63,7 +64,8 @@ class Candidate(BaseModel):
     """A suspect clip discovered on a public platform."""
 
     candidate_id: str
-    url: HttpUrl
+    # URL may be http(s):// or file:// (benchmark uses file://).
+    url: str
     platform: Literal["x", "youtube", "meta", "telegram", "mock", "other"]
     host_country: str | None = None
     uploader: str
@@ -109,7 +111,7 @@ class TakedownNotice(BaseModel):
     notice_id: str
     detection_id: str
     jurisdiction: Jurisdiction
-    target_url: HttpUrl
+    target_url: str
     platform: str
     subject: str
     body: str
@@ -134,12 +136,18 @@ class MerkleReceipt(BaseModel):
 
 
 class AthleteEnrollment(BaseModel):
-    """Opt-in record; no dossier exists without this."""
+    """Opt-in record; no dossier exists without this.
+
+    Phase-1 deliberately does NOT store likeness embeddings. The athlete
+    enrolls by name + preferred language only; we match by athlete id/name
+    references in Clip.athletes and in the verdict's athlete_alert.reason.
+    Phase-2 adds an optional likeness-embedding flow gated on a separate
+    consent acknowledgment — it does not fit the Phase-1 ethics scope.
+    """
 
     athlete_id: str
     display_name: str
     preferred_language: Literal["en", "hi", "en-hi"]
-    likeness_embedding_id: str | None = None
     enrolled_at: datetime
     revoked_at: datetime | None = None
 

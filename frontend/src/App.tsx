@@ -9,6 +9,12 @@ import VerifyPage from "@/pages/VerifyPage";
 import LanguageToggle from "@/components/LanguageToggle";
 import ConstructedBanner from "@/components/ConstructedBanner";
 
+// Docs live in the GitHub repo; raw markdown is not served by Firebase Hosting.
+// Override at build time with VITE_AEGIS_DOCS_BASE to point at a public docs URL.
+const DOCS_BASE =
+  import.meta.env.VITE_AEGIS_DOCS_BASE ??
+  "https://github.com/aegis-team/aegis/blob/main/docs";
+
 export default function App() {
   const { t } = useTranslation();
   return (
@@ -46,9 +52,9 @@ export default function App() {
       <footer className="border-t border-slate-200 text-xs text-slate-500">
         <div className="mx-auto max-w-6xl px-6 py-4 flex gap-4 flex-wrap">
           <span>{t("brand.tagline")}</span>
-          <a className="underline" href="/docs/why-not-drm.md">Why not DRM</a>
-          <a className="underline" href="/docs/ethics.md">Ethics</a>
-          <a className="underline" href="/docs/benchmarks.md">Benchmarks</a>
+          <a className="underline" href={DOCS_BASE + "/why-not-drm.md"} target="_blank" rel="noreferrer">Why not DRM</a>
+          <a className="underline" href={DOCS_BASE + "/ethics.md"} target="_blank" rel="noreferrer">Ethics</a>
+          <a className="underline" href={DOCS_BASE + "/benchmarks.md"} target="_blank" rel="noreferrer">Benchmarks</a>
         </div>
       </footer>
     </div>

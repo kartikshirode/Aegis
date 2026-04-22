@@ -36,23 +36,9 @@ class BelowThreshold(Exception):
 
 
 def pick_jurisdiction(candidate: Candidate) -> Jurisdiction:
-    """Delegates to the platform agent when one exists; fall back to heuristic."""
-    try:
-        from services.agents import get as get_agent
-    except ImportError:
-        get_agent = None
-
-    if get_agent is not None:
-        try:
-            return get_agent(candidate.platform).pick_jurisdiction(candidate)
-        except Exception:
-            pass
-
-    if candidate.host_country == "IN":
-        return Jurisdiction.IN
-    if candidate.host_country == "US":
-        return Jurisdiction.US
-    return Jurisdiction.OTHER
+    """Delegate to the platform agent. Each agent already handles host_country."""
+    from services.agents import get as get_agent
+    return get_agent(candidate.platform).pick_jurisdiction(candidate)
 
 
 def draft_notice(
@@ -166,41 +152,24 @@ def file_notice(notice: TakedownNotice, *, endpoint: str | None = None) -> Taked
 
 
 def _rule_basis_for_verdict(verdict_record: VerdictRecord, platform: str) -> list[str]:
-    """Platform agent owns the mapping — falls back to a safe default."""
-    try:
-        from services.agents import get as get_agent
-        return get_agent(platform).rule_basis_for(verdict_record)
-    except Exception:
-        v = verdict_record.verdict
-        if v == Verdict.DEEPFAKE_MANIPULATION:
-            return ["Rule 3(2)(b)", "Rule 3(1)(b)(vii)"]
-        if v in (Verdict.EXACT_PIRACY, Verdict.SCREEN_RECORDING):
-            return ["copyright"]
-        return []
+    """Platform agent owns the mapping."""
+    from services.agents import get as get_agent
+    return get_agent(platform).rule_basis_for(verdict_record)
 
 
 def _host_provider_of(platform: str) -> str:
-    try:
-        from services.agents import get as get_agent
-        return get_agent(platform).host_provider()
-    except Exception:
-        return "[host provider unknown]"
+    from services.agents import get as get_agent
+    return get_agent(platform).host_provider()
 
 
 def _dmca_agent_email(platform: str) -> str:
-    try:
-        from services.agents import get as get_agent
-        return get_agent(platform).designated_agent_email()
-    except Exception:
-        return ""
+    from services.agents import get as get_agent
+    return get_agent(platform).designated_agent_email()
 
 
 def _resolve_mock_endpoint(platform: str) -> str | None:
-    try:
-        from services.agents import get as get_agent
-        return get_agent(platform).resolve_submit_endpoint()
-    except Exception:
-        return None
+    from services.agents import get as get_agent
+    return get_agent(platform).resolve_submit_endpoint()
 
 
 def _call_gemini_for_draft(template: str, detection_record: dict) -> str:
