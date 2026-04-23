@@ -1,0 +1,68 @@
+# gcloud build context exclusions for `gcloud run deploy --source .`.
+# Keeps the uploaded tarball small and prevents secrets/artefacts from
+# leaking into the Cloud Build cache.
+#
+# Syntax is .gitignore-compatible; gcloud will also honour .gitignore if this
+# file is absent, but we keep a dedicated .gcloudignore because the exclusions
+# we want for builds (tests, data/, docs/) are a SUPERSET of the .gitignore set.
+
+# Heavy corpora (benchmark + demo assets) — not needed by the Cloud Run image.
+data/
+
+# Python + Node caches / build artefacts.
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+.vite/
+.parcel-cache/
+.eslintcache
+
+# Frontend — the Aegis API image is Python-only; the React app deploys via
+# Firebase Hosting, not Cloud Run.
+frontend/
+
+# Tests — not needed in the production image.
+tests/
+
+# Documentation — rendered on GitHub / Firebase Hosting, not from Cloud Run.
+docs/
+deck/
+demo/
+benchmark/
+scripts/
+infra/
+submission-checklist.md
+NEXT_STEPS.md
+aegis-build-plan.md
+
+# Internal — audit notes never ship.
+Audit v*.md
+audit*.md
+.internal/
+
+# Repo metadata + IDE state.
+.git/
+.github/
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+
+# Secrets — defence in depth (these should never exist in the repo, but
+# in case a developer ran gcloud auth locally, don't upload the result).
+*.pem
+*.key
+gcp-sa*.json
+service-account*.json
+credentials*.json
+.env
+.env.*
+!.env.example

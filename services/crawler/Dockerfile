@@ -1,12 +1,15 @@
+# gcloud run jobs deploy --source ./services/crawler sets the build context
+# TO this directory, so COPY paths are relative to services/crawler/.
+
 FROM python:3.11-slim
 
 WORKDIR /app
 
 RUN pip install --no-cache-dir httpx==0.27.2
 
-COPY services/crawler /app/services/crawler
-RUN touch /app/services/__init__.py
+# Copy crawler source. No cross-repo deps.
+COPY . /app/
 
-# Defaults — override via Cloud Run Jobs execution args.
+# Defaults — Cloud Run Jobs exec args can override --args.
 ENV AEGIS_API_BASE=http://aegis-api/
-CMD ["python", "-m", "services.crawler.crawler", "--seeds", "/app/services/crawler/seeds.example.json"]
+CMD ["python", "crawler.py", "--seeds", "/app/seeds.example.json"]

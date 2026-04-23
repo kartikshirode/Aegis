@@ -113,11 +113,13 @@ $env:REGION = "us-central1"
 gcloud projects create $env:PROJECT_ID
 gcloud config set project $env:PROJECT_ID
 
-# Link billing (replace ACCOUNT_ID with yours — find via `gcloud billing accounts list`)
-gcloud billing projects link $env:PROJECT_ID --billing-account=<ACCOUNT_ID>
+# Find and set your billing account (gcloud billing accounts list)
+$env:BILLING_ACCOUNT = "XXXXXX-XXXXXX-XXXXXX"
 
-# Enable APIs, create KMS key, deploy 4 mocks + API + crawler:
-bash infra/deploy.sh
+# Enable APIs, create KMS key, deploy 4 mocks + API + crawler.
+# PowerShell-native — does not need WSL/bash. The bash version lives at
+# infra/deploy.sh for Linux/Mac operators; they are step-for-step equivalent.
+.\infra\deploy.ps1
 ```
 
 **Expect**: script finishes in 8–15 minutes with 5 Cloud Run URLs and a KMS key version printed.
