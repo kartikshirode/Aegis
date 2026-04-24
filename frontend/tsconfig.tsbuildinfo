@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/i18n.ts","./src/main.tsx","./src/vite-env.d.ts","./src/components/bilingualalert.tsx","./src/components/constructedbanner.tsx","./src/components/languagetoggle.tsx","./src/lib/api.ts","./src/pages/athleteview.tsx","./src/pages/rightsholderdashboard.tsx","./src/pages/verifypage.tsx"],"version":"5.9.3"}

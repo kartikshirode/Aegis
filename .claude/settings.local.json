@@ -11,7 +11,11 @@
       "Bash(rm -rf data/adversarial)",
       "Bash(python benchmark/generate_variants.py --originals data/originals --out data/adversarial --seed 2026 --n-originals 30 --chain-samples 50)",
       "Read(//c/Windows/Fonts/**)",
-      "Read(//c/Windows/Fonts//**)"
+      "Read(//c/Windows/Fonts//**)",
+      "Read(//c/Users/Kartik/.claude/projects/**)",
+      "Bash(curl -s https://aegis-api-583212047649.us-central1.run.app/demo/status)",
+      "Bash(gcloud ai *)",
+      "Bash(gcloud run *)"
     ]
   }
 }
