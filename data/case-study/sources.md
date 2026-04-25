@@ -6,23 +6,34 @@ Every image, voice sample, and clip component used to construct the fictional "T
 
 ## Portraits / likeness composition
 
-| Asset ID | Source | License | URL | Used where |
-|---|---|---|---|---|
-| `portrait-01.jpg` | *TBD — team PM to populate* | CC-0 / CC-BY / public domain | — | Base face image for the constructed persona |
-| `portrait-02.jpg` | *TBD* | — | — | Secondary angle |
-| `portrait-03.jpg` | *TBD* | — | — | Three-quarter angle |
+| Asset ID | File | Source (URL) | License | Author / Credit | Used where |
+|---|---|---|---|---|---|
+| `face-source.jpg` | `data/case-study/sources/face-source.jpg` | *https://unsplash.com/photos/young-woman-in-white-dress-holding-lilies-lu5IbAS4mxg* | *https://unsplash.com/photos/young-woman-in-white-dress-holding-lilies-lu5IbAS4mxg* | *https://unsplash.com/photos/young-woman-in-white-dress-holding-lilies-lu5IbAS4mxg* | Source face for FaceFusion `face_swapper` |
+
+License screenshot: `data/case-study/sources/face-source-license.png` *(MISSING — capture before submission)*
+
+SHA-256: `03e9e2410e88061cec6995f37ffa5a11761117339440f9c29917d2c131532e12`
 
 ## Voice samples (for lip-sync track)
 
-| Asset ID | Source | License | URL | Used where |
+| Asset ID | File | Source | License | Used where |
 |---|---|---|---|---|
-| `voice-01.wav` | *TBD — CC-licensed speech dataset or team recording* | — | — | Base voice for the fictional persona |
+| `fake-audio.wav` | `data/case-study/sources/fake-audio.wav` | Synthesized offline via Windows SAPI (`System.Speech.Synthesis.SpeechSynthesizer`, voice: Microsoft Zira) | OS-built-in synthesis, no third-party license required | Lip-sync audio track for FaceFusion `lip_syncer` |
 
-## Stadium / match-context footage (clean originals)
+Script: see `generation-log.md` § "Synthesis text (audio script)".
 
-| Asset ID | Source | License | URL | Used where |
-|---|---|---|---|---|
-| `match-clean-01.mp4` | Pro Kabaddi CC-licensed highlights *or* CC-BY cricket reel *or* team-generated Veo-3 footage | CC-BY / CC-0 / team-generated | — | The "clean original" published to Aegis at `POST /ingest` in the demo |
+SHA-256: `ef45b2a48ad723b520c983e39771270ca654191a6d1210de14f8cd049b984a34`
+
+## Stadium / match-context footage (clean target)
+
+| Asset ID | File | Source (URL) | License | Author / Credit | Used where |
+|---|---|---|---|---|---|
+| `face-target.mp4` | `data/case-study/sources/face-target.mp4` | *https://www.pexels.com/video/woman-talking-while-drinking-her-coffee-6785643/* | *https://www.pexels.com/license/* | *https://www.pexels.com/@marcus-aurelius/* | Target video — speaker whose face is swapped and lips re-synced |
+
+License screenshot: `data/case-study/sources/face-target-license.png` *(MISSING — capture before submission)*
+
+SHA-256 (original 4K): `499a1104ca26b457810bd3d189798f9b1dff7ca38197b3dba462c5e4d7038608`
+SHA-256 (downscaled 720p, used as actual swap input): `ca379db719082eead7980261688ebbf3b249a3e1ba98dc6f12f1d8cbe2fea539`
 
 ## Generated manipulated clip (the deepfake used in the demo)
 
@@ -48,6 +59,7 @@ When PM populates this file:
 
 Before the demo video is uploaded:
 - [ ] Every listed asset has a confirmed license, archived with the asset
+- [ ] License screenshots `face-source-license.png` and `face-target-license.png` exist in `data/case-study/sources/`
 - [ ] Every URL resolves (or has an archive.org snapshot fallback)
 - [ ] The persona's name, league name, and match ID are all prefixed "Test-Subject" / "Test-League" per `docs/case-study.md`
 - [ ] The `CONSTRUCTED TEST SCENARIO · NOT REAL` watermark is burned into every frame that shows the manipulated clip

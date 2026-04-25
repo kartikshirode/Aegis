@@ -39,6 +39,16 @@ credentials*.json
 /tmp/
 aegis_workdir/
 
+# Deepfake intermediates and derivatives — never commit, even to private repos.
+# See docs/case-study.md "Distribution" + "What this clip is not".
+# Original CC-licensed source media (face-source.jpg, face-target.mp4) IS allowed.
+/data/case-study/sources/swapped-raw*.mp4
+/data/case-study/sources/face-target-720p.mp4
+/data/case-study/sources/fake-audio.wav
+
+# Audit / planning notes — not for the public repo (per NEXT_STEPS.md §8)
+Audit v*.md
+
 # Media artefacts from ffmpeg runs
 *.mp4.tmp
 
